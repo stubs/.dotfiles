@@ -1,0 +1,43 @@
+# This is Git's per-user configuration file.
+
+[alias]
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    # View the current working tree status using the short format
+    s = status -s
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+
+    # Unapply most recent stash apply
+    stash-unapply = !git stash show -p | git apply -R
+
+    # List aliases
+    aliases = config --get-regexp alias
+
+[core]
+    pager = diff-so-fancy | less --tabs=4 -RFX
+
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+
+[color "diff"]
+    meta = 227
+    frag = magenta bold
+    commit = 227 bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[user]
+    name = Aaron Gonzalez
+    email = a.gonzalez979@gmail.com
+
+[includeIf "gitdir:/opt/aboutcom/titan/"]
+    path = /opt/aboutcom/titan/.gitconfig

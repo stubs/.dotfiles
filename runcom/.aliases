@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Custom GREP syntax highlights
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# Custom ls command output aliases
+alias ls='ls -GFh'
+alias ll='ls -la'
+alias l.='ls -a'
+
+# Custom cd command behavior
+alias ..='cd ..'
+alias ...='cd ..; cd ..'
+
+# Custom tree output
+alias tree='tree -C -L 3'
+alias dtree='tree -C -d -L 3'
