@@ -10,7 +10,7 @@ set -o vi
 [ ! "$HOSTNAME" = "ABT-AG-h03647.local" ] && export WORKON_HOME=$HOME/.virtualenvs && export PROJECT_HOME=$HOME/dev/python/
 [ "$HOSTNAME" = "ABT-AG-h03647.local" ] && export WORKON_HOME=$HOME/.virtualenvs && export PROJECT_HOME=$HOME/titan
 # Use what ever is the pyenv global python
-[ ! "$HOSTNAME" = "ABT-AG-h03647.local" ] && export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+[ ! "$HOSTNAME" = "ABT-AG-h03647.local" ] && export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 [ "$HOSTNAME" = "ABT-AG-h03647.local" ] && export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 source /usr/local/bin/virtualenvwrapper.sh
 
