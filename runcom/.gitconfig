@@ -20,6 +20,7 @@
 
 [core]
     pager = diff-so-fancy | less --tabs=4 -RFX
+	autocrlf = input
 
 [color "diff-highlight"]
     oldNormal = red bold

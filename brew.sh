@@ -1,4 +1,4 @@
-!#/usr/bin/env bash
+#!/usr/bin/env bash
 
 # Install CLI tools using Homebrew.
 
