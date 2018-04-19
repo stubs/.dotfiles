@@ -17,3 +17,6 @@ alias ...='cd ..; cd ..'
 # Custom tree output
 alias tree='tree -C -L 3'
 alias dtree='tree -C -d -L 3'
+
+# use intellij-idea's diff tool
+alias idiff='idea diff'
