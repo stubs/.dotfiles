@@ -193,11 +193,7 @@ endif
 
 
 " NERDTree stuff************************************
-autocmd VimEnter * NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map `` :NERDTreeToggle<CR> 
-"map <C-t> :NERDTreeToggle<CR>
 
 
 " CTRL-P stuff************************************
