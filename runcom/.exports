@@ -19,5 +19,24 @@ export MANPAGER='less -X'
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 
-#java
+# java
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+# virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
+
+# work vs home
+if [ "$HOSTNAME" = "ABT-AG-h03647.local" ]; then
+    # Virtualenvwrapper stuff
+    export PROJECT_HOME=$HOME/titan
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+
+    # pyspark use Jupyter for dev
+    export SPARK_HOME=/usr/local/lib/python2.7/site-packages/pyspark
+    export PYSPARK_DRIVER_PYTHON=jupyter
+    export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+else
+    export PROJECT_HOME=$HOME/dev/python/
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+fi
+
