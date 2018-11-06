@@ -36,7 +36,7 @@ if [ "$HOSTNAME" = "ABT-AG-h03647.local" ]; then
     export PYSPARK_DRIVER_PYTHON=jupyter
     export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 else
-    export PROJECT_HOME=$HOME/dev/python/
+    export PROJECT_HOME=$HOME/dev
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 fi
 
