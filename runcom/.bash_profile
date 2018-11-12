@@ -6,10 +6,15 @@ done
 # Vi mode in bash
 set -o vi
 
-source /usr/local/bin/virtualenvwrapper.sh
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/agonzalez/google-cloud-sdk/path.bash.inc' ]; then source '/Users/agonzalez/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/agonzalez/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/agonzalez/google-cloud-sdk/completion.bash.inc'; fi
+
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
