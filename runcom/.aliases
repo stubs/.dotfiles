@@ -6,9 +6,9 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # Custom ls command output aliases
-alias ls='ls -GFh'
-alias ll='ls -la'
-alias l.='ls -a'
+alias ls='ls -GFh --color=yes'
+alias ll='ls -la --color=yes'
+alias l.='ls -a --color=yes'
 
 # Custom cd command behavior
 alias ..='cd ..'

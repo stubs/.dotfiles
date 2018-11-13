@@ -11,6 +11,8 @@ brew "dos2unix"
 brew "ghostscript", link: false
 brew "imagemagick", args: ["with-ghostscript"]
 brew "gifify"
+brew "gnutls"
+brew "gnu-sed", args: ["with-default-names"]
 brew "grep", args: ["with-default-names"]
 brew "jq"
 brew "macvim", args: ["with-override-system-vim"]
