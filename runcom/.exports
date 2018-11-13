@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Use Homebrew's python and usr/local/bin before other paths
-export PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 export TERM='xterm'
 
@@ -35,8 +35,5 @@ if [ "$HOSTNAME" = "ABT-AG-h03647.local" ]; then
     export SPARK_HOME=/usr/local/lib/python2.7/site-packages/pyspark
     export PYSPARK_DRIVER_PYTHON=jupyter
     export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
-else
-    export PROJECT_HOME=$HOME/dev/python/
-    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 fi
 
