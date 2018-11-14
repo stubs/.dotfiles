@@ -6,7 +6,10 @@ done
 # Vi mode in bash
 set -o vi
 
-#source /usr/local/bin/virtualenvwrapper.sh
+# work virtualenvs
+if [ "$HOSTNAME" = "ABT-AG-h03647.local" ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/agonzalez/google-cloud-sdk/path.bash.inc' ]; then source '/Users/agonzalez/google-cloud-sdk/path.bash.inc'; fi
@@ -14,7 +17,7 @@ if [ -f '/Users/agonzalez/google-cloud-sdk/path.bash.inc' ]; then source '/Users
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/agonzalez/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/agonzalez/google-cloud-sdk/completion.bash.inc'; fi
 
-# pyenv
+# home pyenvs
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
