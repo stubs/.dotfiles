@@ -6,12 +6,12 @@ tap "homebrew/php"
 brew "autoconf"
 brew "bash"
 brew "caskformula/caskformula/inkscape"
+brew "coreutils"
 brew "cscope"
 brew "diff-so-fancy"
 brew "dos2unix"
 brew "ghostscript", link: false
 brew "gifify"
-brew "gnutls"
 brew "gnu-sed", args: ["with-default-names"]
 brew "grep", args: ["with-default-names"]
 brew "imagemagick", args: ["with-ghostscript"]
