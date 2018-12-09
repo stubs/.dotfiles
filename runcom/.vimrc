@@ -144,7 +144,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-surround'
 Plugin 'mattn/emmet-vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'powerline/powerline' ", {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/nerdtree'
