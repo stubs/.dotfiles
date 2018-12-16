@@ -7,9 +7,9 @@ done
 set -o vi
 
 # work virtualenvs
-if [ "$HOSTNAME" = "ABT-AG-h03647.local" ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
+# if [ "$HOSTNAME" = "ABT-AG-h03647.local" ]; then
+source /usr/local/bin/virtualenvwrapper.sh
+# fi
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/agonzalez/google-cloud-sdk/path.bash.inc' ]; then source '/Users/agonzalez/google-cloud-sdk/path.bash.inc'; fi
