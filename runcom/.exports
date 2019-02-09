@@ -26,7 +26,7 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export WORKON_HOME=$HOME/.virtualenvs
 
 # work vs home
-if [ "$HOSTNAME" = "ABT-AG-h03647.local" ]; then
+if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then    # TODO if LIKE "ABT-AG-h03647"
     # Virtualenvwrapper stuff
     export PROJECT_HOME=$HOME/titan
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
