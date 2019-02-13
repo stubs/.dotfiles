@@ -10,3 +10,10 @@ function mkd() {
 function manpdf() {
     man -t "${1}" | open -f -a /Applications/Preview.app/
 }
+
+
+if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
+    function scpt() {
+        scp "${1}" taskmaster1:/home/dpuser/agonzalez/
+    }
+fi

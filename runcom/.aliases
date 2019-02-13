@@ -23,3 +23,12 @@ alias idiff='idea diff'
 
 # file counts in dirs
 alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | uniq -c'
+
+# brew stuff
+alias bu='brew update'
+alias bco='brew cask outdated --greedy'
+
+# work machine aliases
+if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
+    alias ssht='ssh taskmaster1'
+fi
