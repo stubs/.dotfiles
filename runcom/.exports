@@ -36,6 +36,9 @@ if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
     export PYSPARK_DRIVER_PYTHON=jupyter
     export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
+    # aws 
+    export AWS_PROFILE=dotdash-dataops
+
 else
     export VIRTUALENVWRAPPER_PYTHON=/Users/stubs/.pyenv/shims/python # depends on pyenv python ATM
 fi
