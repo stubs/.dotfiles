@@ -2,10 +2,8 @@ tap "caskformula/caskformula"
 tap "caskroom/cask"
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "homebrew/php"
 brew "autoconf"
 brew "bash"
-brew "caskformula/caskformula/inkscape"
 brew "coreutils"
 brew "cscope"
 brew "diff-so-fancy"
@@ -14,7 +12,6 @@ brew "ghostscript", link: false
 brew "gifify"
 brew "gnu-sed", args: ["with-default-names"]
 brew "grep", args: ["with-default-names"]
-brew "imagemagick", args: ["with-ghostscript"]
 brew "jq"
 brew "macvim", args: ["with-override-system-vim"]
 brew "mysql"
@@ -25,7 +22,6 @@ brew "pyenv"
 brew "pyenv-virtualenv"
 brew "python"
 brew "python@2"
-brew "tesseract"
 brew "tor"
 brew "trash"
 brew "tree"

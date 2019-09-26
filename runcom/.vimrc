@@ -132,8 +132,6 @@ set smartcase
 "nnoremap <F9> :exec '!clear; python' shellescape(@%, 1)<cr>
 "For my macbook pro use the line below because of the keyboard
 nnoremap <F1> :exec '!clear; python' shellescape(@%, 1)<cr>
-
-
 """"""""""""""""""
 
 
@@ -142,15 +140,15 @@ call vundle#begin()     " All plugins between these two call statements
 Plugin 'VundleVim/Vundle.vim'
 ""additional plugins
 Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-surround'
-Plugin 'mattn/emmet-vim'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'powerline/powerline' ", {'rtp': 'powerline/bindings/vim/'}
-Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mattn/emmet-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'powerline/powerline' ", {'rtp': 'powerline/bindings/vim/'}
+Plugin 'tpope/vim-surround'
+"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'rking/ag.vim'
-"Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'scrooloose/nerdtree'
 
 "If fresh install of vundle, install my plugins
 if iCanHazVundle == 0
@@ -191,18 +189,20 @@ endif
 "nmap <silent> <RIGHT> :cnext<CR>
 "nmap <silent> <LEFT> :cprev<CR>
 
+set grepprg=egrep\ -ni\ --color=always\ $*\ /dev/null
+
 
 " NERDTree stuff************************************
-map `` :NERDTreeToggle<CR> 
+"map `` :NERDTreeToggle<CR> 
 
 
 " CTRL-P stuff************************************
-"set wildignore+=*/tmp/*,*.swp " Linux/MacOSX
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/](Applications|Documents|Library|Movies|Music|Pictures)$'
+    \ }
+set wildignore+=*/tmp/*,*.swp " Linux/MacOSX
 "set wildignore+=*\\tmp\\*, *.swp, *.zip, *.exe " Windows
-
-
-" Jedi-Vim stuff************************************
-"let g:jedi#use_tabs_not_buffers = 1
 
 
 " bind F to grep word under the cursor
@@ -215,7 +215,6 @@ colorscheme solarized
 
 
 "set bs=indent,eol,start        " allow backspacing over everything in insert mode
-"set backup             " keep a backup file
 set viminfo='20,\"50    " read/write a .viminfo file, don't store more
                         " than 50 lines of registers
 set history=50          " keep 50 lines of command line history
