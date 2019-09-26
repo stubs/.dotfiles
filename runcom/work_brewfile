@@ -2,7 +2,6 @@ tap "caskformula/caskformula"
 tap "caskroom/cask"
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "homebrew/php"
 brew "autoconf"
 brew "bash"
 brew "coreutils"
@@ -10,7 +9,6 @@ brew "cscope"
 brew "diff-so-fancy"
 brew "dos2unix"
 brew "ghostscript", link: false
-brew "imagemagick", args: ["with-ghostscript"]
 brew "gifify"
 brew "gnu-sed", args: ["with-default-names"]
 brew "grep", args: ["with-default-names"]
@@ -26,7 +24,6 @@ cask "1password"
 cask "alfred"
 cask "authy"
 cask "datagrip"
-cask "dbeaver-community"
 cask "dropbox"
 cask "firefox"
 cask "google-chrome"
