@@ -82,6 +82,7 @@ map <C-h> <C-w>h
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
+vnoremap <Leader>S :sort!<CR>
 
 
 " easier moving of code blocks
