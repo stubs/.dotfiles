@@ -1,6 +1,6 @@
-"Check for vundle and git clone if not present
+" get Vundle
 let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+let vundle_readme=expand("~/.vim/bundle/vundle/README.md")
 if !filereadable(vundle_readme)
     echo "Installing Vundle.."
     echo ""
@@ -44,7 +44,7 @@ set nofoldenable        " dont fold by default
 set viminfo='20,\"50    " read/write a .viminfo file, don't store more than 50 lines of registers
 set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
-set grepprg=egrep\ -ni\ --color=always\ $*\ /dev/null
+set grepprg=egrep\ -ni\ $*\ /dev/null
 set wildignore+=*/tmp/*,*.swp " Linux/MacOSX
 "set wildignore+=*\\tmp\\*, *.swp, *.zip, *.exe " Windows
 "set bs=indent,eol,start        " allow backspacing over everything in insert mode
