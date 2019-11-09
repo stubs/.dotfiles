@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Use Homebrew's python and usr/local/bin before other paths
-export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 export TERM='xterm'
 
@@ -19,14 +18,14 @@ export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8';
 
-# java
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-
 # virtualenvs
 export WORKON_HOME=$HOME/.virtualenvs
 
 # work vs home
 if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
+    # java
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
     # Virtualenvwrapper stuff
     export PROJECT_HOME=$HOME/dev
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
