@@ -17,6 +17,8 @@ brew "grep", args: ["with-default-names"]
 brew "jq"
 brew "macvim", args: ["with-override-system-vim"]
 brew "mysql"
+# Python version management
+brew "pyenv"
 brew "trash"
 brew "tree"
 cask "1password"
