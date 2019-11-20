@@ -88,6 +88,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <C-h> <C-w>h
+nnoremap _ <C-w>_
+nnoremap <bar> <C-w><bar>
+nnoremap = <C-w>=
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
