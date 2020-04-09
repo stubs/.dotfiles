@@ -4,6 +4,8 @@ do
     export PATH=/usr/local/opt/$word/libexec/gnubin:$PATH
 done
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 export TERM='xterm'
 
 # Adding custom colors to bash_profile
@@ -50,5 +52,3 @@ if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
 else
     export VIRTUALENVWRAPPER_PYTHON=/Users/stubs/.pyenv/shims/python # depends on pyenv python ATM
 fi
-
-
