@@ -16,6 +16,9 @@ if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
     function scpt() {
         scp "${1}" taskmaster1:/home/dpuser/agonzalez/
     }
+    function scpt2() {
+        scp "${1}" taskmaster2:/home/agonzalez/
+    }
 fi
 
 parse_git_branch() {

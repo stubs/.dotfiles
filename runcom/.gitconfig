@@ -12,6 +12,9 @@
     branches = branch -a
     remotes = remote -v
 
+    # New Branch
+    nb = checkout -b
+
     # Unapply most recent stash apply
     stash-unapply = !git stash show -p | git apply -R
 
