@@ -30,7 +30,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # work vs home
-if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
+if [[ $HOSTNAME = "ip-192-168-1-152.ec2.internal" ]]; then
     # java
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
@@ -52,6 +52,8 @@ if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
 
     # GCLOUD SDK
     export CLOUDSDK_PYTHON=/Users/agonzalez/.pyenv/versions/2.7.16/bin/python2
+    export CLOUDSDK_BQ_PYTHON=/Users/agonzalez/.pyenv/versions/2.7.16/bin/python2
+
 else
     export VIRTUALENVWRAPPER_PYTHON=/Users/stubs/.pyenv/shims/python # depends on pyenv python ATM
 fi
