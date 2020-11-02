@@ -28,7 +28,7 @@ alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | u
 alias bu='brew update && brew cask outdated --greedy'
 
 # work machine aliases
-if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
+if [[ $USER = 'agonzalez' && $HOSTNAME = "ip-192-168"* ]]; then
     alias st1='ssh taskmaster1'
     alias st2='ssh taskmaster2'
 fi

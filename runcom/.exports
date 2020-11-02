@@ -30,7 +30,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # work vs home
-if [[ $HOSTNAME = "ip-192-168-1-152.ec2.internal" ]]; then
+if [[ $USER = 'agonzalez' && $HOSTNAME = "ip-192-168"* ]]; then
     # java
     export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
