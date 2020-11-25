@@ -44,5 +44,5 @@
     name = Aaron Gonzalez
     email = a.gonzalez979@gmail.com
 
-[includeIf "gitdir:/Users/agonzalez/Dropbox/opt/aboutcom/titan/"]
-    path = /Users/agonzalez/Dropbox/opt/aboutcom/titan/.gitconfig
+[includeIf "gitdir:/opt/dotdash/dataops/curator/"]
+    path = ~/.gitconfig-dotdash
