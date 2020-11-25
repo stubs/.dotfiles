@@ -24,6 +24,7 @@
 [core]
     pager = diff-so-fancy | less --tabs=4 -RFX
 	autocrlf = input
+	hooksPath = /Users/agonzalez/.githooks
 
 [color "diff-highlight"]
     oldNormal = red bold
