@@ -25,7 +25,7 @@ alias idiff='idea diff'
 alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | uniq -c'
 
 # brew stuff
-alias bu='brew update && brew cask outdated --greedy'
+alias bu='brew update && brew outdated --cask --greedy'
 
 # work machine aliases
 if [[ $USER = 'agonzalez' && $HOSTNAME = "ip-192-168"* ]]; then
