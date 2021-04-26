@@ -5,35 +5,24 @@ tap "homebrew/core"
 brew "autoconf"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
 brew "cscope"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Convert text between DOS, UNIX, and Mac formats
-brew "dos2unix"
-brew "gnu-sed", args: ["with-default-names"]
-brew "grep", args: ["with-default-names"]
+brew "gnu-sed"
+brew "grep"
 brew "jq"
-brew "macvim", args: ["with-override-system-vim"]
-brew "mysql"
 # Python version management
 brew "pyenv"
-brew "trash"
 brew "tree"
 cask "1password"
 cask "alfred"
 cask "authy"
-cask "brave-browser"
-cask "datagrip"
 cask "docker"
 cask "dropbox"
-cask "firefox"
-cask "intellij-idea-ce"
 cask "iterm2"
 cask "java8"
 cask "skype"
-cask "slack"
+# cask "slack"
 cask "spotify"
 cask "teamviewer"
 cask "visual-studio-code"
