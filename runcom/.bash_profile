@@ -24,3 +24,12 @@ fi
 
 #haskell
 [ -f /Users/stubs/.ghcup/env ] && source /Users/stubs/.ghcup/env
+
+# choose right homebrew
+arch_name="$(uname -m)"
+if [ "${arch_name}" = "x86_64" ]; then
+  eval $(/usr/local/bin/brew shellenv)
+  export SYSTEM_VERSION_COMPAT=1
+else
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
