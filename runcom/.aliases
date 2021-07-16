@@ -23,9 +23,3 @@ alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | u
 
 # brew stuff
 alias bu='brew update && brew outdated --cask --greedy'
-
-# work machine aliases
-if [[ $USER = 'agonzalez' && $HOSTNAME = "ip-192-168"* ]]; then
-    alias st1='ssh taskmaster1'
-    alias st2='ssh taskmaster2'
-fi
