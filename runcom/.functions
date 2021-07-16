@@ -5,14 +5,12 @@ function mkd() {
     mkdir -p "$@" && cd "$@"
 }
 
-
 # Open man page as PDF
 function manpdf() {
     man -t "${1}" | open -f -a /Applications/Preview.app/
 }
 
-
-if [[ $HOSTNAME = "ABT-AG-h03647"* ]]; then
+if [[ $USER = 'agonzalez' ]]; then
     function scpt() {
         scp "${1}" taskmaster1:/home/dpuser/agonzalez/
     }
@@ -30,7 +28,7 @@ quick_tox() {
 
     # accept user cli arg of branch to checkout, save current branch to return to when done
     while getopts b: flag
-    do case "${flag}" in 
+    do case "${flag}" in
         b) branch=${OPTARG};;
         esac
     done
@@ -44,12 +42,12 @@ quick_tox() {
         # run tox on new branch
         if [[ -f "`git rev-parse --show-toplevel`/tox.ini" ]]; then
             tox
-        fi 
+        fi
 
-        # checkout previous branch 
+        # checkout previous branch
         git checkout $prev_branch
     else
         echo "You have uncommitted changes.  Please stash or commit before quick_tox run."
-        return 1 
+        return 1
     fi
 }
