@@ -18,6 +18,9 @@
     # Unapply most recent stash apply
     stash-unapply = !git stash show -p | git apply -R
 
+    # push set-upstream origin
+    psuo = push --set-upstream origin
+
     # List aliases
     aliases = config --get-regexp alias
 

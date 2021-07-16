@@ -6,9 +6,9 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # Custom ls command output aliases
-alias ls='ls -GFh --color=yes'
-alias ll='ls -la --color=yes'
-alias l.='ls -a --color=yes'
+alias ls='ls -GFh'
+alias ll='ls -la'
+alias l.='ls -a'
 
 # Custom cd command behavior
 alias ..='cd ..'
@@ -18,17 +18,8 @@ alias ...='cd ..; cd ..'
 alias tree='tree -C -L 3'
 alias dtree='tree -C -d -L 3'
 
-# use intellij-idea's diff tool
-alias idiff='idea diff'
-
 # file counts in dirs
 alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | uniq -c'
 
 # brew stuff
 alias bu='brew update && brew outdated --cask --greedy'
-
-# work machine aliases
-if [[ $USER = 'agonzalez' && $HOSTNAME = "ip-192-168"* ]]; then
-    alias st1='ssh taskmaster1'
-    alias st2='ssh taskmaster2'
-fi
