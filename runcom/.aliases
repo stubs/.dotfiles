@@ -18,9 +18,6 @@ alias ...='cd ..; cd ..'
 alias tree='tree -C -L 3'
 alias dtree='tree -C -d -L 3'
 
-# use intellij-idea's diff tool
-alias idiff='idea diff'
-
 # file counts in dirs
 alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | uniq -c'
 
