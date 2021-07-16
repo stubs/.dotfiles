@@ -33,3 +33,5 @@ if [ "${arch_name}" = "x86_64" ]; then
 else
   eval $(/opt/homebrew/bin/brew shellenv)
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
