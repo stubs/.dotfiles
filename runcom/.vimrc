@@ -2,44 +2,41 @@
 autocmd! bufwritepost .vimrc source %
 
 " get Vundle
-let iCanHazVundle=1
-let vundle_readme=expand("~/.vim/bundle/vundle/README.md")
-if !filereadable(vundle_readme)
-    echo "Installing Vundle.."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
-    let iCanHazVundle=0
-endif
-
-call vundle#begin()     " All plugins between these two call statements
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'tpope/vim-surround'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'morhetz/gruvbox'
-
-"If fresh install of vundle, install my plugins
-if iCanHazVundle == 0
-    echo "Installing Vundles, please ignore key map error messages"
-    echo ""
-    :PluginInstall
-endif
-call vundle#end()
+" let iCanHazVundle=1
+" let vundle_readme=expand("~/.vim/bundle/vundle/README.md")
+" if !filereadable(vundle_readme)
+"     echo "Installing Vundle.."
+"     echo ""
+"     silent !mkdir -p ~/.vim/bundle
+"     silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
+"     let iCanHazVundle=0
+" endif
+"
+" call vundle#begin()     " All plugins between these two call statements
+" Plugin 'VundleVim/Vundle.vim'
+" Plugin 'Raimondi/delimitMate'
+" Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'tpope/vim-surround'
+" Plugin 'junegunn/fzf'
+" Plugin 'junegunn/fzf.vim'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'morhetz/gruvbox'
+"
+" "If fresh install of vundle, install my plugins
+" if iCanHazVundle == 0
+"     echo "Installing Vundles, please ignore key map error messages"
+"     echo ""
+"     :PluginInstall
+" endif
+" call vundle#end()
 
 filetype off
 filetype plugin indent on
 syntax enable
 
 " Rebind leader key
-let mapleader = "`"
-
-" set termguicolors
+let mapleader = " "
 set ai                  " always set autoindenting on
 set clipboard=unnamed
 set expandtab           " Use the appropriate number of spaces to insert a <Tab>
@@ -55,13 +52,13 @@ set incsearch
 set laststatus=2
 set mouse=a
 set nobackup
-set nocompatible	    " Use Vim defaults (much better!)
+set nocompatible        " Use Vim defaults (much better!)
 set nofoldenable        " dont fold by default
 set noswapfile
 set nowrap
 set nowritebackup
 set nu
-set rtp+=~/.vim/bundle/Vundle.vim
+" set rtp+=~/.vim/bundle/Vundle.vim
 set rnu
 set ruler               " show the cursor position all the time
 set shiftround
@@ -103,32 +100,29 @@ vnoremap < <gv
 vnoremap > >gv
 
 " FZF-Vim
-let g:fzf_preview_window = ['up:60%'] " always have preview window
-nnoremap <leader>p :GFiles! <CR>
-
+" let g:fzf_preview_window = ['up:60%'] " always have preview window
+" nnoremap <leader>p :GFiles! <CR>
+"
 " Buffer selecting with FZF
-nnoremap <leader>b :Buffers<cr>
-
-" FZF-Vim's Ag
-nnoremap <leader>f :Ag! <CR>
-" command! -bang -nargs=* Ag
-" \ call fzf#vim#ag(<q-args>,
-" \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-" \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-" \                 <bang>0)
-
-" Python Stuff******************************************
-
-
-function! PythonRun()
-    redir @s
-    :!clear; python %
-endfunction
-
-nnoremap <F1> :call PythonRun()<cr>
-" nnoremap <F1> :exec '!clear; python ' shellescape(@%, 1)<cr>
+" nnoremap <leader>b :Buffers<cr>
+"
+" " FZF-Vim's Ag
+" nnoremap <leader>f :Ag! <CR>
+" " command! -bang -nargs=* Ag
+" " \ call fzf#vim#ag(<q-args>,
+" " \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+" " \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+" " \                 <bang>0)
+"
+" " Python Stuff******************************************
+" function! PythonRun()
+"     redir @s
+"     :!clear; python %
+" endfunction
+"
+" nnoremap <F1> :call PythonRun()<cr>
+nnoremap <F1> :exec '!clear; python ' shellescape(@%, 1)<cr>
 nnoremap <leader>d Oimport ipdb; ipdb.set_trace()  # <<<<<<<<<< BREAKPOINT
-
 " End Python Stuff******************************************
 
 " bind Ctrl+<movement> keys to move around the windows/splits
@@ -138,8 +132,8 @@ map <C-l> <C-w>l
 map <C-h> <C-w>h
 
 " VIM-Indent Guide stuff
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_guide_size = 1
 
 " Show trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -149,6 +143,6 @@ map <Leader>x :%s/\s\+$//
 
 " colorscheme settings
 set background=light
-colorscheme gruvbox
+" colorscheme gruvbox
 
 " highlight colorcolumn ctermbg=233
