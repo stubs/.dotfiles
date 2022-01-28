@@ -26,3 +26,4 @@ if [ -f '/Users/agonzalez/google-cloud-sdk/completion.bash.inc' ]; then source '
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[[ -f ~/.bashrc ]] && source ~/.bashrc # ghcup-env
