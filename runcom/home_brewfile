@@ -3,36 +3,22 @@ tap "homebrew/cask"
 tap "homebrew/core"
 # Automatic configure script builder
 brew "autoconf"
-# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Convert text between DOS, UNIX, and Mac formats
-brew "dos2unix"
-# Distributed revision control system
 brew "git"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU grep, egrep and fgrep
 brew "grep"
-# Lightweight and flexible command-line JSON processor
 brew "jq"
-# GUI for vim, made for macOS
-brew "macvim"
-# Open source relational database management system
-brew "mysql"
-# Python version management
+brew "neovim"
 brew "pyenv"
-# Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
-# Anonymizing overlay network for TCP
-brew "tor"
-# CLI tool that moves files or folder to the trash
-brew "trash"
-# Display directories as trees (with optional color/HTML output)
 brew "tree"
+brew "virtualenvwrapper"
 cask "1password"
 cask "alfred"
 cask "authy"
@@ -42,7 +28,7 @@ cask "datagrip"
 cask "docker"
 cask "dropbox"
 cask "firefox"
-cask "intellij-idea-ce"
+cask "iterm2"
 cask "skype"
 cask "slack"
 cask "spotify"
