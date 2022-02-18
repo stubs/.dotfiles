@@ -15,74 +15,83 @@ augroup end
 
 return require('packer').startup(function(use)
     -- My plugins here
-  use 'Raimondi/delimitMate'
-  use 'morhetz/gruvbox'
-  use 'stevearc/aerial.nvim'    -- setup in key_maps with on_attach
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-surround'
-  use 'wbthomason/packer.nvim'  -- have packer manage itself
+  use {'Raimondi/delimitMate'}
+  use {'morhetz/gruvbox'}
+  use {'stevearc/aerial.nvim'}    -- setup in key_maps with on_attach
+  use {'tpope/vim-fugitive'}
+  use {'tpope/vim-surround'}
+  use {'wbthomason/packer.nvim'}  -- have packer manage itself
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function()
         require("config/gitsigns")
     end,
-    disable = false,
-    after = 'nvim-dap'
+    after = 'nvim-dap',
+    disable=false
   }
   use {
      'mfussenegger/nvim-dap' ,
      config = function()
          require("config/nvim-dap")
-     end
+     end,
+    disable=false
   }
   use {
     'rcarriga/nvim-dap-ui',
     requires  = { 'mfussenegger/nvim-dap' },
     config = function()
         require("config/nvim-dap-ui")
-    end
+    end,
+    disable=false
   }
   use {
     'mfussenegger/nvim-dap-python',
     requires  = { 'mfussenegger/nvim-dap' },
      config = function()
         require('config/nvim-dap-python')
-      end
+      end,
+    disable=false
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
   use {
     'rmagatti/goto-preview',
     config = function()
         require('config/goto-preview')
-    end
+    end,
+    disable=false
   }
   use {
     'numToStr/Comment.nvim',
     config = function()
         require('Comment').setup()
-    end
+    end,
+    disable=false
   }
   use {
     'L3MON4D3/LuaSnip',
     after = 'nvim-cmp',
     config = function ()
         require('config/luasnip')
-    end
+    end,
+    disable=false
   }
   use {
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-buffer','hrsh7th/cmp-path','hrsh7th/cmp-cmdline', 'hrsh7th/cmp-nvim-lsp', 'saadparwaiz1/cmp_luasnip','rafamadriz/friendly-snippets' },
     config = function()
         require('config/nvim-cmp')
-    end
+    end,
+    disable=false
   }
   use {
     'nvim-treesitter/nvim-treesitter',
     config = function()
         require("config/nvim-treesitter")
     end,
-    run = ':TSUpdate'}
+    run = ':TSUpdate',
+    disable=false
+  }
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -95,7 +104,8 @@ return require('packer').startup(function(use)
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
         require("config/trouble")
-    end
+    end,
+    disable=false
   }
   use {
     'nvim-telescope/telescope.nvim',
@@ -103,12 +113,14 @@ return require('packer').startup(function(use)
     config = function()
         require("config/telescope")
     end,
+    disable=false
   }
   use {
     'neovim/nvim-lspconfig', -- Collection of configurations for the built-in LSP client
     run = function()
         require("config/nvim-lspconfig")
-    end
+    end,
+    disable=false
   }
   use {
     'jose-elias-alvarez/null-ls.nvim',
@@ -116,7 +128,7 @@ return require('packer').startup(function(use)
     config = function()
         require("config/null-ls")
     end,
-
+    disable=false
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
