@@ -25,6 +25,11 @@ M.workon_dotfiles = function()
     require('telescope.builtin').git_files({ prompt_title = '~ work dotfiles ~', cwd = '/opt/dotdash/dataops/dotfiles/' })
 end
 
+M.workon_nebula = function()
+    vim.cmd [[:tabnew | tcd /opt/dotdash/dataops/nebula/]]
+    require('telescope.builtin').git_files({ prompt_title = '~ Nebula ~', cwd = '/opt/dotdash/dataops/nebula/' })
+end
+
 M.python_run = function()
     vim.cmd [[
         :exec '!clear; python ' shellescape(@%, 1)

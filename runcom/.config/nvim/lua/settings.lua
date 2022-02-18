@@ -31,6 +31,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.swapfile = false
 vim.o.tabstop = 4
+vim.o.termguicolors = true
 vim.o.wrap = false
 vim.o.writebackup = false
 vim.opt.clipboard = 'unnamedplus'

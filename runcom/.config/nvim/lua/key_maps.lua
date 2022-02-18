@@ -35,6 +35,7 @@ keymap('n', '<Leader>vrc', ':lua require("functions").nvim_config_find() <CR>', 
 keymap('n', '<Leader>wc', ':lua require("functions").workon_curator() <CR>', opts)
 keymap('n', '<Leader>wd', ':lua require("functions").workon_dotfiles() <CR>', opts)
 keymap('n', '<Leader>wa', ':lua require("functions").workon_aqueduct() <CR>', opts)
+keymap('n', '<Leader>wn', ':lua require("functions").workon_nebula() <CR>', opts)
 -- keymap('n', '<F1>', ':lua require "functions".python_run() <CR>', opts)  -- DEPRECATE in favor of nvim-dap continue()
 
 -- telescope key bindings
