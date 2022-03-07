@@ -6,7 +6,7 @@ vim.cmd([[
 -- Settings
 vim.g.colors_name = 'gruvbox'
 vim.o.ai = true                         -- always vim.o.autoindenting on
-vim.o.background = 'dark'
+vim.o.background = 'light'
 vim.o.backup = false
 vim.o.compatible = false	    	-- Use Vim defaults (much better!)
 vim.o.expandtab = true                  -- use the appropriate number of spaces to insert a <Tab>

@@ -22,6 +22,14 @@ return require('packer').startup(function(use)
   use {'tpope/vim-surround'}
   use {'wbthomason/packer.nvim'}  -- have packer manage itself
   use {
+    'sindrets/diffview.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config= function()
+        require('config/diffview')
+    end,
+    disable=false
+  }
+  use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function()
