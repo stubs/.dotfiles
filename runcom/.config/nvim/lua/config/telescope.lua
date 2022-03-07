@@ -27,7 +27,7 @@ end
 
 require('telescope').setup{
     defaults = {
-        path_display = {'smart'},
+        -- path_display = {'smart'},
         mappings = {
             i = {
                 ["<TAB>"] = actions.toggle_selection,

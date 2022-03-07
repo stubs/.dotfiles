@@ -83,6 +83,9 @@ keymap('n', '[h', "&diff ? '[h' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
 keymap('n', '<leader>hs', ':Gitsigns stage_hunk<CR>', opts)
 keymap('n', '<leader>hd', ':Gitsigns diffthis<CR>', opts)
 
+-- diffview
+keymap('n', '<leader>D', ':DiffviewOpen<CR>', opts)
+
 -- Use an on_attach function to only map the following keys after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
