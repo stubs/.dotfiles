@@ -27,25 +27,23 @@ quick_tox() {
     # Quick checkout of dev branch, and validate with tox for checking team members' PRs.
 
     # accept user cli arg of branch to checkout, save current branch to return to when done
-    while getopts b: flag
-    do case "${flag}" in
-        b) branch=${OPTARG};;
-        esac
-    done
-    prev_branch=`git rev-parse --abbrev-ref HEAD`
+    branch="${1}"
+    prev_branch="$(git rev-parse --abbrev-ref HEAD)"
 
     # stash changes before checkout?
-    if [[ -z `git status -s` ]]; then
-        git checkout $branch
+    if [[ -z $(git status -s) ]]; then
+        git checkout "$branch"
         git pull
 
         # run tox on new branch
-        if [[ -f "`git rev-parse --show-toplevel`/tox.ini" ]]; then
+        if [[ -f "$(git rev-parse --show-toplevel)/tox.ini" ]]; then
             tox
         fi
 
         # checkout previous branch
-        git checkout $prev_branch
+        git checkout "$prev_branch"
+        unset branch
+        unset prev_branch
     else
         echo "You have uncommitted changes.  Please stash or commit before quick_tox run."
         return 1
