@@ -39,6 +39,17 @@ require('telescope').setup{
             n = i,
         },
     },
+    pickers = {
+        git_status = {
+            layout_strategy='vertical'
+        },
+        git_files = {
+            prompt_title=" GIT FILES "
+        },
+        buffers = {
+            sort_mru = true
+        }
+    },
     extensions = {
         fzf = {
             fuzzy = true,                    -- false will only do exact matching
