@@ -1,0 +1,52 @@
+# This is Git's per-user configuration file.
+
+[alias]
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    # View the current working tree status using the short format
+    s = status -s
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+
+    # New Branch
+    nb = checkout -b
+
+    # Unapply most recent stash apply
+    stash-unapply = !git stash show -p | git apply -R
+
+    # push set-upstream origin
+    psuo = push --set-upstream origin
+
+    # List aliases
+    aliases = config --get-regexp alias
+
+[core]
+    pager = delta --light
+	autocrlf = input
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    features = decorations
+    line-numbers = true
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+
+[user]
+    name = Aaron Gonzalez
+    email = a.gonzalez979@gmail.com
+
+[includeIf "gitdir:/opt/"]
+    path = ~/.gitconfig-dotdash
