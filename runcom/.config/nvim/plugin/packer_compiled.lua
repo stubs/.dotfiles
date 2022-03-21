@@ -154,6 +154,12 @@ _G.packer_plugins = {
     path = "/Users/agonzalez/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["luatab.nvim"] = {
+    config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18config/luatab\frequire\0" },
+    loaded = true,
+    path = "/Users/agonzalez/.local/share/nvim/site/pack/packer/start/luatab.nvim",
+    url = "https://github.com/alvarosevilla95/luatab.nvim"
+  },
   ["null-ls.nvim"] = {
     config = { "\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config/null-ls\frequire\0" },
     loaded = true,
@@ -238,6 +244,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: luatab.nvim
+time([[Config for luatab.nvim]], true)
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18config/luatab\frequire\0", "config", "luatab.nvim")
+time([[Config for luatab.nvim]], false)
+-- Config for: nvim-dap-python
+time([[Config for nvim-dap-python]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27config/nvim-dap-python\frequire\0", "config", "nvim-dap-python")
+time([[Config for nvim-dap-python]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27config/nvim-treesitter\frequire\0", "config", "nvim-treesitter")
@@ -246,57 +260,53 @@ time([[Config for nvim-treesitter]], false)
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config/trouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
--- Config for: nvim-dap-python
-time([[Config for nvim-dap-python]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27config/nvim-dap-python\frequire\0", "config", "nvim-dap-python")
-time([[Config for nvim-dap-python]], false)
--- Config for: goto-preview
-time([[Config for goto-preview]], true)
-try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config/goto-preview\frequire\0", "config", "goto-preview")
-time([[Config for goto-preview]], false)
--- Config for: diffview.nvim
-time([[Config for diffview.nvim]], true)
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config/diffview\frequire\0", "config", "diffview.nvim")
-time([[Config for diffview.nvim]], false)
--- Config for: nvim-dap-ui
-time([[Config for nvim-dap-ui]], true)
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23config/nvim-dap-ui\frequire\0", "config", "nvim-dap-ui")
-time([[Config for nvim-dap-ui]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config/nvim-dap\frequire\0", "config", "nvim-dap")
-time([[Config for nvim-dap]], false)
 -- Config for: null-ls.nvim
 time([[Config for null-ls.nvim]], true)
 try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config/null-ls\frequire\0", "config", "null-ls.nvim")
 time([[Config for null-ls.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config/lualine\frequire\0", "config", "lualine.nvim")
-time([[Config for lualine.nvim]], false)
+-- Config for: nvim-dap-ui
+time([[Config for nvim-dap-ui]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23config/nvim-dap-ui\frequire\0", "config", "nvim-dap-ui")
+time([[Config for nvim-dap-ui]], false)
+-- Config for: diffview.nvim
+time([[Config for diffview.nvim]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config/diffview\frequire\0", "config", "diffview.nvim")
+time([[Config for diffview.nvim]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config/nvim-cmp\frequire\0", "config", "nvim-cmp")
 time([[Config for nvim-cmp]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config/lualine\frequire\0", "config", "lualine.nvim")
+time([[Config for lualine.nvim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config/nvim-dap\frequire\0", "config", "nvim-dap")
+time([[Config for nvim-dap]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: goto-preview
+time([[Config for goto-preview]], true)
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config/goto-preview\frequire\0", "config", "goto-preview")
+time([[Config for goto-preview]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config/telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd LuaSnip ]]
-
--- Config for: LuaSnip
-try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config/luasnip\frequire\0", "config", "LuaSnip")
-
 vim.cmd [[ packadd gitsigns.nvim ]]
 
 -- Config for: gitsigns.nvim
 try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config/gitsigns\frequire\0", "config", "gitsigns.nvim")
+
+vim.cmd [[ packadd LuaSnip ]]
+
+-- Config for: LuaSnip
+try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19config/luasnip\frequire\0", "config", "LuaSnip")
 
 time([[Sequenced loading]], false)
 if should_profile then save_profiles() end

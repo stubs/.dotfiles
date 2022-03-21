@@ -36,6 +36,7 @@ keymap('n', '<Leader>wc', ':lua require("functions").workon_curator() <CR>', opt
 keymap('n', '<Leader>wd', ':lua require("functions").workon_dotfiles() <CR>', opts)
 keymap('n', '<Leader>wa', ':lua require("functions").workon_aqueduct() <CR>', opts)
 keymap('n', '<Leader>wn', ':lua require("functions").workon_nebula() <CR>', opts)
+keymap('n', '<Leader>D', ':lua require("functions").delta_git_status()<CR>', opts)
 -- keymap('n', '<F1>', ':lua require "functions".python_run() <CR>', opts)  -- DEPRECATE in favor of nvim-dap continue()
 
 -- telescope key bindings
@@ -84,7 +85,7 @@ keymap('n', '<leader>hs', ':Gitsigns stage_hunk<CR>', opts)
 keymap('n', '<leader>hd', ':Gitsigns diffthis<CR>', opts)
 
 -- diffview
-keymap('n', '<leader>D', ':DiffviewOpen<CR>', opts)
+-- keymap('n', '<leader>D', ':DiffviewOpen<CR>', opts)
 
 -- Use an on_attach function to only map the following keys after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
