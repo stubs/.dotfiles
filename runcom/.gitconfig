@@ -27,7 +27,6 @@
 [core]
     pager = delta --light
 	autocrlf = input
-	hooksPath = /Users/agonzalez/.githooks
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
