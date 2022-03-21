@@ -13,7 +13,13 @@ brew update
 brew upgrade
 
 # Install all dependencies. Make sure that the ./runcom/Brewfile is symlinked to ~/
-# brew bundle
+echo "Which brewfile to bundle install?"
+select yn in "~/home_brewfile" "~/work_brewfile"; do
+    case $yn in
+        "~/home_brewfile" ) brew bundle --file="~/home_brewfile"; break;;
+        "~/work_brewfile" ) brew bundle --file="~/work_brewfile"; break;;
+    esac
+done
 
 # Remove outdated versions from the cellar.
 brew cleanup
