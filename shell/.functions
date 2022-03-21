@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# Create a new directory and enter it
+function mkd() {
+    mkdir -p "$@" && cd "$@"
+}
+
+# Open man page as PDF
+function manpdf() {
+    man -t "${1}" | open -f -a /Applications/Preview.app/
+}
+
+if [[ $USER = 'agonzalez' ]]; then
+    function scpt() {
+        scp "${1}" taskmaster1:/home/dpuser/agonzalez/
+    }
+    function scpt2() {
+        scp "${1}" taskmaster2:/home/agonzalez/
+    }
+fi
+
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
+}
+
+quick_tox() {
+    # Quick checkout of dev branch, and validate with tox for checking team members' PRs.
+
+    # accept user cli arg of branch to checkout, save current branch to return to when done
+    branch="${1}"
+    prev_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+    # stash changes before checkout?
+    if [[ -z $(git status -s) ]]; then
+        git checkout "$branch"
+        git pull
+
+        # run tox on new branch
+        if [[ -f "$(git rev-parse --show-toplevel)/tox.ini" ]]; then
+            tox
+        fi
+
+        # checkout previous branch
+        git checkout "$prev_branch"
+        unset branch
+        unset prev_branch
+    else
+        echo "You have uncommitted changes.  Please stash or commit before quick_tox run."
+        return 1
+    fi
+}

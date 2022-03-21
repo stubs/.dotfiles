@@ -1,0 +1,73 @@
+#!/bin/bash
+for word in coreutils grep gnu-sed
+do
+    export PATH=/usr/local/opt/$word/libexec/gnubin:$PATH
+done
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export TERM='xterm'
+
+# Adding custom colors to bash_profile
+export PS1="[\T] \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\[\033[32m\]\$(parse_git_branch)\[\033[00m\]\$ "
+export CLICOLOR=1
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="${yellow}"
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER='less -X'
+export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8';
+
+# virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
+
+# golang stuff
+export GOPATH=$HOME/dev/go
+export PATH=$PATH:$GOPATH/bin
+
+# work vs home
+if [[ $USER = 'agonzalez' ]]; then # && $HOSTNAME = "ip-192-168"* ]]; then
+    # pyenv
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+
+    # Virtualenvwrapper stuff
+    export PROJECT_HOME=$HOME/dev
+    export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python3
+    export VIRTUALENVWRAPPER_VIRTUALENV=~/.pyenv/shims/python3
+    export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="-m venv"
+    export VIRTUALENVWRAPPER_VIRTUALENV_CLONE=$(brew --prefix)/bin/virtualenv-clone
+    source $(brew --prefix)/bin/virtualenvwrapper.sh
+
+    # pyspark use Jupyter for dev
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+    export SPARK_HOME=/Users/agonzalez/Downloads/spark-2.4.7-bin-hadoop2.6
+    export PYSPARK_DRIVER_PYTHON=jupyter
+    export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+
+    # aws
+    export AWS_PROFILE=dotdash-dataops
+
+    # GCLOUD SDK
+    export CLOUDSDK_PYTHON=/usr/bin/python3
+    # export CLOUDSDK_BQ_PYTHON=/Users/agonzalez/.pyenv/versions/2.7.16/bin/python2
+    if [ -d "$HOME/google-cloud-sdk/bin" ]; then export PATH=$PATH:~/google-cloud-sdk/bin; fi
+
+    #
+
+    if [ "${arch_name}" = "x86_64" ]; then
+        export PATH="$(brew --prefix libpq)/bin:$PATH"
+        export CFLAGS="-I$(brew --prefix sqlite)/include -I$(brew --prefix openssl@1.1)/include -I$(brew --prefix readline)/include -I$(brew --prefix zlib)/include -I$(brew --prefix bzip2)/include -I$(xcrun --show-sdk-path)/usr/include"
+        export LDFLAGS="-L$(brew --prefix sqlite)/lib -L$(brew --prefix openssl@1.1)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib -L$(brew --prefix libpq)/lib"
+        export CPPFLAGS="-I$(brew --prefix libpq)/include"
+    fi
+
+else
+    export VIRTUALENVWRAPPER_PYTHON=/Users/stubs/.pyenv/shims/python # depends on pyenv python ATM
+fi
