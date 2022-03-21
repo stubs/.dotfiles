@@ -13,7 +13,7 @@ brew update
 brew upgrade
 
 # Install all dependencies. Make sure that the ./runcom/Brewfile is symlinked to ~/
-brew bundle
+# brew bundle
 
 # Remove outdated versions from the cellar.
 brew cleanup
