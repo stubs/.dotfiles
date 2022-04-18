@@ -26,7 +26,7 @@ export PYTHONIOENCODING='UTF-8';
 export WORKON_HOME=$HOME/.virtualenvs
 
 # golang stuff
-export GOPATH=$HOME/dev/go
+export GOPATH=$HOME/dev/work/go
 export PATH=$PATH:$GOPATH/bin
 
 # work vs home
