@@ -78,7 +78,7 @@ return require('packer').startup(function(use)
   }
   use {
     'L3MON4D3/LuaSnip',
-    after = 'nvim-cmp',
+    -- after = 'nvim-cmp',
     config = function ()
         require('config/luasnip')
     end,
@@ -86,7 +86,7 @@ return require('packer').startup(function(use)
   }
   use {
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-buffer','hrsh7th/cmp-path','hrsh7th/cmp-cmdline', 'hrsh7th/cmp-nvim-lsp', 'saadparwaiz1/cmp_luasnip','rafamadriz/friendly-snippets' },
+    requires = { 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/cmp-cmdline', 'hrsh7th/cmp-nvim-lsp', 'saadparwaiz1/cmp_luasnip', 'rafamadriz/friendly-snippets' },
     config = function()
         require('config/nvim-cmp')
     end,
@@ -144,6 +144,9 @@ return require('packer').startup(function(use)
     config = function()
         require("config/luatab")
     end
+  }
+  use {
+    'rebelot/kanagawa.nvim'
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
