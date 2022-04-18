@@ -27,3 +27,6 @@ if [ -f '/Users/agonzalez/google-cloud-sdk/completion.bash.inc' ]; then source '
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -f ~/.bashrc ]] && source ~/.bashrc # ghcup-env
+
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+eval "$(starship init bash)"

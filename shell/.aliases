@@ -6,9 +6,9 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # Custom ls command output aliases
-alias ls='ls -GFh'
-alias ll='ls -la'
-alias l.='ls -a'
+alias ls='exa -F --icons --group-directories-first'
+alias ll='exa -lhF --git --icons --group-directories-first'
+alias l.='exa -alhF --git --icons --group-directories-first'
 
 # Custom cd command behavior
 alias ..='cd ..'
@@ -23,3 +23,6 @@ alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | u
 
 # brew stuff
 alias bu='brew update && brew outdated --cask --greedy'
+
+# cat alias
+alias cat='bat --theme="Solarized (light)"'
