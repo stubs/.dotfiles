@@ -4,9 +4,9 @@ vim.cmd([[
 ]])
 
 -- Settings
-vim.g.colors_name = 'gruvbox'
+vim.g.colors_name = 'kanagawa'
 vim.o.ai = true                         -- always vim.o.autoindenting on
-vim.o.background = 'light'
+vim.o.background = 'dark'
 vim.o.backup = false
 vim.o.compatible = false	    	-- Use Vim defaults (much better!)
 vim.o.expandtab = true                  -- use the appropriate number of spaces to insert a <Tab>
@@ -19,10 +19,11 @@ vim.o.history = 50                      -- keep 50 lines of command line history
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
-vim.o.laststatus = 2
+vim.opt.laststatus = 3
 vim.o.mouse = 'a'
 vim.o.nu = true
 vim.o.rnu = true
+vim.o.cursorline = true
 vim.o.shiftround = true
 vim.o.shiftwidth = 4
 vim.o.smartcase = true
@@ -45,3 +46,6 @@ vim.diagnostic.config({
   virtual_text = false,
   float = { source = true }
 })
+
+-- nicer win sep 
+vim.cmd([[hi WinSeparator guibg=None]])
