@@ -30,3 +30,4 @@ if [ -f '/Users/agonzalez/google-cloud-sdk/completion.bash.inc' ]; then source '
 
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 eval "$(starship init bash)"
+. "$HOME/.cargo/env"
