@@ -14,6 +14,7 @@ vim.o.foldenable = false        	-- dont fold by default
 vim.o.foldmethod = 'indent'              -- fold based on indent
 vim.o.foldnestmax = 3                  -- deepest fold is 3 levels
 vim.o.grepprg= 'egrep -n $* /dev/null'
+vim.o.guifont='FiraCode_Nerd_Font'
 vim.o.hidden = true
 vim.o.history = 50                      -- keep 50 lines of command line history
 vim.o.hlsearch = true
@@ -33,6 +34,7 @@ vim.o.splitright = true
 vim.o.swapfile = false
 vim.o.tabstop = 4
 vim.o.termguicolors = true
+vim.o.updatetime=300
 vim.o.wrap = false
 vim.o.writebackup = false
 vim.opt.clipboard = 'unnamedplus'
@@ -47,5 +49,5 @@ vim.diagnostic.config({
   float = { source = true }
 })
 
--- nicer win sep 
+-- nicer win sep
 vim.cmd([[hi WinSeparator guibg=None]])
