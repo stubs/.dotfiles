@@ -29,8 +29,8 @@ done
 echo "Which brewfile to bundle install?"
 select yn in "~/home_brewfile" "~/work_brewfile"; do
     case $yn in
-        "~/home_brewfile" ) brew bundle --file="~/home_brewfile"; break;;
-        "~/work_brewfile" ) brew bundle --file="~/work_brewfile"; break;;
+        "~/home_brewfile" ) brew bundle --file="~/home_brewfile" --no-lock; break;;
+        "~/work_brewfile" ) brew bundle --file="~/work_brewfile" --no-lock; break;;
     esac
 done
 
