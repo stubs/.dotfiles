@@ -1,7 +1,11 @@
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- npm i -g pyright
 require('lspconfig').pyright.setup{
     capabilities = capabilities
 }
+
+-- npm i -g bash-language-server
 require('lspconfig').bashls.setup{
     capabilities = capabilities
 }
@@ -10,6 +14,7 @@ require('lspconfig').bashls.setup{
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
+-- SKIP: BREW INSTALLED
 require'lspconfig'.sumneko_lua.setup {
     capabilities = capabilities,
     settings = {
@@ -35,5 +40,8 @@ require'lspconfig'.sumneko_lua.setup {
         },
     },
 }
+-- npm i -g typescript typescript-language-server
 require'lspconfig'.tsserver.setup{}
+
+-- SKIP: BREW INSTALLED
 require'lspconfig'.rust_analyzer.setup{}

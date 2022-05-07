@@ -37,3 +37,7 @@ done
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+
+# npm language servers
+grep -E "npm" nvim/.config/nvim/lua/config/nvim-lspconfig.lua | sed 's/-- npm i -g //g' | xargs npm i -g
