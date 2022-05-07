@@ -6,7 +6,7 @@ local M = {}
 M.nvim_config_find = function()
     require('telescope.builtin').find_files({
         prompt_title = '~ NeoVim Configs ~',
-        cwd = '/Users/agonzalez/.config/nvim/'
+        cwd = '~/.config/nvim/'
     })
 end
 
