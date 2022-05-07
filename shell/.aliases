@@ -10,6 +10,8 @@ if command -v exa &> /dev/null; then
     alias ls='exa -F --icons --group-directories-first'
     alias ll='exa -lhF --git --icons --group-directories-first'
     alias l.='exa -alhF --git --icons --group-directories-first'
+    alias tree='exa -aFT --icons --group-directories-first -I .git'
+    alias dtree='exa -aFT --icons --group-directories-first -I .git -D'
 else
     alias ls='ls -GFh'
     alias ll='ls -la'
@@ -19,10 +21,6 @@ fi
 # Custom cd command behavior
 alias ..='cd ..'
 alias ...='cd ..; cd ..'
-
-# Custom tree output
-alias tree='tree -C -L 3'
-alias dtree='tree -C -d -L 3'
 
 # file counts in dirs
 alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | uniq -c'
