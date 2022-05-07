@@ -2,13 +2,13 @@
 
 
 # download nerd font
-compgen -G "~/Library/Fonts/Fira*Nerd*" > /dev/null \
+compgen -G "$HOME/Library/Fonts/Fira*Nerd*" > /dev/null \
 || \
 curl -JLO 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip' \
-  && mkdir ~/FiraCode \
-  && unzip FiraCode.zip -d ~/FiraCode \
-  && cp ~/FiraCode/* ~/Library/Fonts/ \
-  && rm -r ~/FiraCode
+  && mkdir "$HOME"/FiraCode \
+  && unzip FiraCode.zip -d "$HOME"/FiraCode \
+  && cp "$HOME"/FiraCode/* "$HOME"/Library/Fonts/ \
+  && rm -r "$HOME"/FiraCode
 
 
 # Install Homebrew if not installed.
@@ -21,16 +21,16 @@ command -v stow >/dev/null 2>&1 || brew install stow
 # stow deploy
 for dir in $(/bin/ls -d */)
 do
-    echo $dir | cut -d/ -f1 | xargs -I{} stow {}
+    echo "$dir" | cut -d/ -f1 | xargs -I{} stow {}
 done
 
 
 # Install all dependencies. Make sure that the ./runcom/Brewfile is symlinked to ~/
 echo "Which brewfile to bundle install?"
-select yn in "~/home_brewfile" "~/work_brewfile"; do
+select yn in "$HOME/home_brewfile" "$HOME/work_brewfile"; do
     case $yn in
-        "~/home_brewfile" ) brew bundle --file="~/home_brewfile" --no-lock; break;;
-        "~/work_brewfile" ) brew bundle --file="~/work_brewfile" --no-lock; break;;
+        "$HOME/home_brewfile" ) brew bundle --file="$HOME/home_brewfile" --no-lock; break;;
+        "$HOME/work_brewfile" ) brew bundle --file="$HOME/work_brewfile" --no-lock; break;;
     esac
 done
 
