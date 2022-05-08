@@ -28,10 +28,10 @@ done
 # Install all dependencies. Make sure that the ./runcom/Brewfile is symlinked to ~/
 echo "Which brewfile to bundle install?"
 select yn in "$HOME/home_brewfile" "$HOME/work_brewfile"; do
-    case $yn in
-        "$HOME/home_brewfile" ) brew bundle --file="$HOME/home_brewfile" --no-lock; break;;
-        "$HOME/work_brewfile" ) brew bundle --file="$HOME/work_brewfile" --no-lock; break;;
-    esac
+  case $yn in
+    "$HOME/home_brewfile" ) brew bundle --file="$HOME/home_brewfile" --no-lock; break;;
+    "$HOME/work_brewfile" ) brew bundle --file="$HOME/work_brewfile" --no-lock; break;;
+  esac
 done
 
 
