@@ -18,9 +18,18 @@ brew update
 command -v stow >/dev/null 2>&1 || brew install stow
 
 
-# stow deploy
+# rm stow targets & stow deploy
 for dir in $(/bin/ls -d */)
 do
+    for file in $(/usr/bin/find ./"$dir" -maxdepth 1 -type f -ls | cut -d/ -f3)
+    do
+        rm "$HOME/$file" > /dev/null 2>&1
+    done
+    # rm .config/<subdir> prior to stowing
+    for subdir in $("$(brew --prefix)"/opt/coreutils/libexec/gnubin/ls -aR1 --ignore='.git' "$dir" | grep -Eo "/\.config/\w+/" | uniq)
+    do
+        rm "$HOME$subdir" > /dev/null 2>&1
+    done
     echo "$dir" | cut -d/ -f1 | xargs -I{} stow {}
 done
 
