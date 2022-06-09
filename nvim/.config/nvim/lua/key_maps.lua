@@ -15,9 +15,9 @@ keymap('', '<C-k>', '<C-w>k', opts)
 keymap('', '<C-l>', '<C-w>l', opts)
 keymap('n', '<Left>', ':-tabnext<CR>', opts)
 keymap('n', '<Right>', ':+tabnext<CR>', opts)
-keymap('i', '<C-z>', '<esc>:update<CR>', opts)
+keymap('i', '<C-s>', '<esc>:update<CR>', opts)
 keymap('', '<Leader>x', ':%s/\\s\\+$//', opts)                                 -- Alternate File
-keymap('n', '<C-z>', ':update<CR>', opts)                               -- Quick save
+keymap('n', '<C-s>', ':update<CR>', opts)                               -- Quick save
 keymap('n', '<Leader>`', '<C-^>', opts)                                 -- Alternate File
 keymap('n', '<Leader>d', 'oimport ipdb; ipdb.set_trace()  # <<<<<<<<<< BREAKPOINT<esc>', opts)       -- Ipdb breakpoint
 keymap('n', '<Leader>n', ':nohl<CR>', opts)                             -- 86 highlight
@@ -27,7 +27,7 @@ keymap('n', '_', '<C-w>_', opts)                                        -- max h
 keymap('n', '<S-Tab>', '<C-o>', opts)                                   -- Previous Jump
 keymap('v', '<', '<gv', opts)                                           -- indent viz blocks of code
 keymap('v', '>', '>gv', opts)
-keymap('v', '<C-z>', '<esc>:update<CR>', opts)
+keymap('v', '<C-s>', '<esc>:update<CR>', opts)
 keymap('v', '<Leader>S', ':sort!<CR>', opts)
 keymap('v', '<Leader>s', ':sort<CR>', opts)                             -- Quick sort
 
