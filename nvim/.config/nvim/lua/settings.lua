@@ -13,7 +13,7 @@ vim.o.expandtab = true                  -- use the appropriate number of spaces 
 vim.o.foldenable = false        	-- dont fold by default
 vim.o.foldmethod = 'indent'              -- fold based on indent
 vim.o.foldnestmax = 3                  -- deepest fold is 3 levels
-vim.o.grepprg= 'egrep -n $* /dev/null'
+vim.o.grepprg= 'rg --vimgrep --no-heading --smart-case'
 vim.o.guifont='FiraCode_Nerd_Font'
 vim.o.hidden = true
 vim.o.history = 50                      -- keep 50 lines of command line history
@@ -21,6 +21,7 @@ vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
 vim.opt.laststatus = 3
+vim.o.listchars='tab:▷▷⋮,trail:-,space:.'
 vim.o.mouse = 'a'
 vim.o.nu = true
 vim.o.rnu = true
@@ -39,9 +40,6 @@ vim.o.wrap = false
 vim.o.writebackup = false
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.wildignore:append {"*/tmp/*","*.swp"}  -- Linux/MacOSX
--- vim.o.fo-=t
--- vim.o.viminfo='20,\"50    " read/write a .viminfo file, don't store more than 50 lines of registers
--- vim.o.wildignore+=*\\tmp\\*, *.swp, *.zip, *.exe " Windows
 
 -- LSP diagnostic config
 vim.diagnostic.config({
