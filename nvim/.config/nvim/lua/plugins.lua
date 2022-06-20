@@ -152,6 +152,10 @@ return require('packer').startup(function(use)
     'simrat39/rust-tools.nvim',
     disable=false
   }
+  use {
+    'github/copilot.vim',
+    disable=false
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
