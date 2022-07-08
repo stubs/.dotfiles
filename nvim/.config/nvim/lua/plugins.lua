@@ -21,13 +21,14 @@ return require('packer').startup(function(use)
   use {'tpope/vim-fugitive'}
   use {'tpope/vim-surround'}
   use {'wbthomason/packer.nvim'}  -- have packer manage itself
+  use {'nvim-lua/plenary.nvim'}
   use {
     'sindrets/diffview.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config= function()
         require('config/diffview')
     end,
-    disable=false
+    disable=true
   }
   use {
     'lewis6991/gitsigns.nvim',
@@ -154,7 +155,7 @@ return require('packer').startup(function(use)
   }
   use {
     'github/copilot.vim',
-    disable=false
+    disable=true
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
