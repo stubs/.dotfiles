@@ -30,6 +30,7 @@ command -v "$(brew --prefix)"/opt/coreutils/libexec/gnubin/ls >/dev/null 2>&1 ||
 command -v "$(brew --prefix)"/opt/grep/libexec/gnubin/grep >/dev/null 2>&1 || brew install grep
 command -v "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed >/dev/null 2>&1 || brew install gnu-sed
 
+
 # rm stow targets & stow deploy
 for dir in $(/bin/ls -d */)
 do
@@ -55,13 +56,20 @@ select yn in "$HOME/home_brewfile" "$HOME/work_brewfile"; do
   esac
 done
 
-
 # Remove outdated versions from the cellar.
 brew cleanup
 
 
+# use bash
+echo "Adding homebrew's bash to /etc/shells... "
+echo "$(brew --prefix)/bin/bash" | sudo tee -a /etc/shells
+echo "Changing default shell to bash... "
+chsh -s "$(brew --prefix)"/bin/bash
+
+
 # npm language servers
 "$(brew --prefix)"/opt/grep/libexec/gnubin/grep -E "npm" nvim/.config/nvim/lua/config/nvim-lspconfig.lua | "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed 's/-- npm i -g //g' | xargs "$(brew --prefix)"/bin/npm i -g
+
 
 # fzf keybindings and fuzzy comp
 "$(brew --prefix)"/opt/fzf/install
