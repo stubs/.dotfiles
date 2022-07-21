@@ -15,9 +15,20 @@ curl -JLO 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Fira
 # Install Homebrew if not installed.
 command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+
+ARCH_NAME="$(uname -m)"
+if [ "${ARCH_NAME}" = "x86_64" ]; then
+  eval $(/usr/local/bin/brew shellenv)
+  export SYSTEM_VERSION_COMPAT=1
+else
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 brew update
 command -v stow >/dev/null 2>&1 || brew install stow
-
+command -v "$(brew --prefix)"/opt/coreutils/libexec/gnubin/ls >/dev/null 2>&1 || brew install coreutils
+command -v "$(brew --prefix)"/opt/grep/libexec/gnubin/grep >/dev/null 2>&1 || brew install grep
+command -v "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed >/dev/null 2>&1 || brew install gnu-sed
 
 # rm stow targets & stow deploy
 for dir in $(/bin/ls -d */)
@@ -31,7 +42,7 @@ do
     do
         rm "$HOME$subdir" > /dev/null 2>&1
     done
-    echo "$dir" | cut -d/ -f1 | xargs -I{} stow {}
+    echo "$dir" | cut -d/ -f1 | xargs -I{} "$(brew --prefix)"/opt/stow/bin/stow {}
 done
 
 
@@ -50,4 +61,7 @@ brew cleanup
 
 
 # npm language servers
-grep -E "npm" nvim/.config/nvim/lua/config/nvim-lspconfig.lua | sed 's/-- npm i -g //g' | xargs npm i -g
+"$(brew --prefix)"/opt/grep/libexec/gnubin/grep -E "npm" nvim/.config/nvim/lua/config/nvim-lspconfig.lua | "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed 's/-- npm i -g //g' | xargs "$(brew --prefix)"/bin/npm i -g
+
+# fzf keybindings and fuzzy comp
+"$(brew --prefix)"/opt/fzf/install
