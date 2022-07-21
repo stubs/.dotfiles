@@ -8,7 +8,8 @@ curl -JLO 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Fira
   && mkdir "$HOME"/FiraCode \
   && unzip FiraCode.zip -d "$HOME"/FiraCode \
   && cp "$HOME"/FiraCode/* "$HOME"/Library/Fonts/ \
-  && rm -r "$HOME"/FiraCode
+  && rm -r "$HOME"/FiraCode \
+  && rm FiraCode.zip
 
 
 # Install Homebrew if not installed.
