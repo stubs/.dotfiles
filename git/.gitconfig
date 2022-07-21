@@ -47,6 +47,3 @@
 [user]
     name = Aaron Gonzalez
     email = a.gonzalez979@gmail.com
-
-[includeIf "gitdir:/opt/"]
-    path = ~/.gitconfig-dotdash
