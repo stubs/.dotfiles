@@ -8,14 +8,27 @@ curl -JLO 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Fira
   && mkdir "$HOME"/FiraCode \
   && unzip FiraCode.zip -d "$HOME"/FiraCode \
   && cp "$HOME"/FiraCode/* "$HOME"/Library/Fonts/ \
-  && rm -r "$HOME"/FiraCode
+  && rm -r "$HOME"/FiraCode \
+  && rm FiraCode.zip
 
 
 # Install Homebrew if not installed.
 command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+
+ARCH_NAME="$(uname -m)"
+if [ "${ARCH_NAME}" = "x86_64" ]; then
+  eval $(/usr/local/bin/brew shellenv)
+  export SYSTEM_VERSION_COMPAT=1
+else
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
 brew update
 command -v stow >/dev/null 2>&1 || brew install stow
+command -v "$(brew --prefix)"/opt/coreutils/libexec/gnubin/ls >/dev/null 2>&1 || brew install coreutils
+command -v "$(brew --prefix)"/opt/grep/libexec/gnubin/grep >/dev/null 2>&1 || brew install grep
+command -v "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed >/dev/null 2>&1 || brew install gnu-sed
 
 
 # rm stow targets & stow deploy
@@ -30,7 +43,7 @@ do
     do
         rm "$HOME$subdir" > /dev/null 2>&1
     done
-    echo "$dir" | cut -d/ -f1 | xargs -I{} stow {}
+    echo "$dir" | cut -d/ -f1 | xargs -I{} "$(brew --prefix)"/opt/stow/bin/stow {}
 done
 
 
@@ -43,10 +56,20 @@ select yn in "$HOME/home_brewfile" "$HOME/work_brewfile"; do
   esac
 done
 
-
 # Remove outdated versions from the cellar.
 brew cleanup
 
 
+# use bash
+echo "Adding homebrew's bash to /etc/shells... "
+echo "$(brew --prefix)/bin/bash" | sudo tee -a /etc/shells
+echo "Changing default shell to bash... "
+chsh -s "$(brew --prefix)"/bin/bash
+
+
 # npm language servers
-grep -E "npm" nvim/.config/nvim/lua/config/nvim-lspconfig.lua | sed 's/-- npm i -g //g' | xargs npm i -g
+"$(brew --prefix)"/opt/grep/libexec/gnubin/grep -E "npm" nvim/.config/nvim/lua/config/nvim-lspconfig.lua | "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed 's/-- npm i -g //g' | xargs "$(brew --prefix)"/bin/npm i -g
+
+
+# fzf keybindings and fuzzy comp
+"$(brew --prefix)"/opt/fzf/install
