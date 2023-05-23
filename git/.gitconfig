@@ -25,6 +25,7 @@
     aliases = config --get-regexp alias
 
 [core]
+    hooksPath = ~/.githooks
     pager = delta --light
 	autocrlf = input
 
