@@ -1,7 +1,7 @@
 -- autocmd to source when this file is written to.
+-- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false }) -- autoshow diagnostic on float
 vim.cmd([[
     autocmd BufWritePost key_maps.lua source <afile> | source $MYVIMRC
-    autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
 
 local opts = { noremap=true, silent=true }
@@ -33,10 +33,8 @@ keymap('v', '<Leader>s', ':sort<CR>', opts)                             -- Quick
 
 -- function keybindings
 keymap('n', '<Leader>vrc', ':lua require("functions").nvim_config_find() <CR>', opts)
-keymap('n', '<Leader>wc', ':lua require("functions").workon_curator() <CR>', opts)
-keymap('n', '<Leader>wd', ':lua require("functions").workon_dotfiles() <CR>', opts)
-keymap('n', '<Leader>wa', ':lua require("functions").workon_aqueduct() <CR>', opts)
-keymap('n', '<Leader>wn', ':lua require("functions").workon_nebula() <CR>', opts)
+keymap('n', '<Leader>we', ':lua require("functions").workon_ethelhawk() <CR>', opts)
+keymap('n', '<Leader>wd', ':lua require("functions").workon_datahawk() <CR>', opts)
 keymap('n', '<Leader>D', ':lua require("functions").delta_git_status()<CR>', opts)
 -- keymap('n', '<F1>', ':lua require "functions".python_run() <CR>', opts)  -- DEPRECATE in favor of nvim-dap continue()
 
@@ -61,8 +59,8 @@ keymap('n', 'gd', ':lua require("goto-preview").goto_preview_definition()<CR>', 
 keymap('n', 'gD', ':lua require("goto-preview").close_all_win()<CR>', opts)
 
 -- lsp key bindings
-keymap('n', '[c', '<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>', opts)
-keymap('n', ']c', '<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>', opts)
+keymap('n', '[c', '<cmd>lua vim.diagnostic.goto_prev({ float = false })<CR>', opts)
+keymap('n', ']c', '<cmd>lua vim.diagnostic.goto_next({ float = false })<CR>', opts)
 --keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 --keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 --keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
@@ -83,7 +81,13 @@ keymap('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>', opts)
 keymap('n', ']h', "&diff ? ']h' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
 keymap('n', '[h', "&diff ? '[h' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
 keymap('n', '<leader>hs', ':Gitsigns stage_hunk<CR>', opts)
+keymap('n', '<leader>hu', ':Gitsigns undo_stage_hunk<CR>', opts)
 keymap('n', '<leader>hd', ':Gitsigns diffthis<CR>', opts)
+
+-- nvim-tree key bindings
+keymap('n', '<leader>tt', '<cmd>NvimTreeToggle<CR>', opts)
+keymap('n', '<leader>tf', '<cmd>NvimTreeFindFile<CR>', opts)
+keymap('n', '<leader>tc', '<cmd>NvimTreeCollapse<CR>', opts)
 
 -- diffview
 -- keymap('n', '<leader>D', ':DiffviewOpen<CR>', opts)
@@ -111,7 +115,7 @@ local on_attach = function(client, bufnr)
 
   -- aerial attach for symbols view in files
   require("aerial").setup{
-    buf_keymap(bufnr, 'n', '<leader>aa', '<cmd>AerialToggle!<CR>', opts)
+    buf_keymap(bufnr, 'n', '<leader>aa', '<cmd>Telescope aerial<CR>', opts)
   }
 end
 

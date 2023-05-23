@@ -40,11 +40,15 @@ vim.o.wrap = false
 vim.o.writebackup = false
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.wildignore:append {"*/tmp/*","*.swp"}  -- Linux/MacOSX
+vim.opt.winbar = "%=%m %f"
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- LSP diagnostic config
 vim.diagnostic.config({
   virtual_text = false,
-  float = { source = true }
+  -- float = { source = true },
+  virtual_lines = { only_current_line = true }
 })
 
 -- nicer win sep

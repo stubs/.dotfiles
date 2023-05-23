@@ -10,24 +10,14 @@ M.nvim_config_find = function()
     })
 end
 
-M.workon_curator = function()
-    vim.cmd [[:tabnew | tcd /opt/dotdash/dataops/curator/]]
-    require('telescope.builtin').git_files({ prompt_title = '~ Curator ~', cwd = '/opt/dotdash/dataops/curator/' })
+M.workon_ethelhawk = function()
+    vim.cmd [[:tabnew | tcd ~/dev/density/ethelhawk/]]
+    require('telescope.builtin').git_files({ prompt_title = '~ ethelhawk ~', cwd = '~/dev/density/ethelhawk/' })
 end
 
-M.workon_aqueduct = function()
-    vim.cmd [[:tabnew | tcd /opt/dotdash/dataops/aqueduct/]]
-    require('telescope.builtin').git_files({ prompt_title = '~ Aqueduct ~', cwd = '/opt/dotdash/dataops/aqueduct/' })
-end
-
-M.workon_dotfiles = function()
-    vim.cmd [[:tabnew | tcd /opt/dotdash/dataops/dotfiles/]]
-    require('telescope.builtin').git_files({ prompt_title = '~ work dotfiles ~', cwd = '/opt/dotdash/dataops/dotfiles/' })
-end
-
-M.workon_nebula = function()
-    vim.cmd [[:tabnew | tcd /opt/dotdash/dataops/nebula/]]
-    require('telescope.builtin').git_files({ prompt_title = '~ Nebula ~', cwd = '/opt/dotdash/dataops/nebula/' })
+M.workon_datahawk = function()
+    vim.cmd [[:tabnew | tcd ~/dev/density/datahawk/]]
+    require('telescope.builtin').git_files({ prompt_title = '~ datahawk ~', cwd = '~/dev/density/datahawk/' })
 end
 
 M.python_run = function()

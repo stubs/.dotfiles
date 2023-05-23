@@ -28,6 +28,7 @@ end
 require('telescope').setup{
     defaults = {
         -- path_display = {'smart'},
+        layout_strategy='vertical',
         mappings = {
             i = {
                 ["<TAB>"] = actions.toggle_selection,
@@ -41,10 +42,14 @@ require('telescope').setup{
     },
     pickers = {
         git_status = {
-            layout_strategy='vertical'
+            -- layout_strategy='vertical'
+        },
+        find_files = {
+            -- layout_strategy='vertical'
         },
         git_files = {
-            prompt_title=" GIT FILES "
+            prompt_title=" GIT FILES ",
+            -- layout_strategy='vertical'
         },
         buffers = {
             sort_mru = true

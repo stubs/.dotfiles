@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
   use {'tpope/vim-surround'}
   use {'wbthomason/packer.nvim'}  -- have packer manage itself
   use {'nvim-lua/plenary.nvim'}
+  use {'nvim-tree/nvim-web-devicons'}
   use {
     'sindrets/diffview.nvim',
     requires = 'nvim-lua/plenary.nvim',
@@ -103,14 +104,14 @@ return require('packer').startup(function(use)
   }
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
         require("config/lualine")
     end
   }
   use {
     'folke/trouble.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
+    requires = 'nvim-tree/nvim-web-devicons',
     config = function()
         require("config/trouble")
     end,
@@ -141,7 +142,7 @@ return require('packer').startup(function(use)
   }
   use {
     'alvarosevilla95/luatab.nvim',
-    requires='kyazdani42/nvim-web-devicons',
+    requires='nvim-tree/nvim-web-devicons',
     config = function()
         require("config/luatab")
     end
@@ -154,8 +155,19 @@ return require('packer').startup(function(use)
     disable=false
   }
   use {
-    'github/copilot.vim',
-    disable=true
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+        require("lsp_lines").setup()
+    end,
+  }
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons'
+    },
+    config = function()
+        require("nvim-tree").setup()
+    end,
   }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
