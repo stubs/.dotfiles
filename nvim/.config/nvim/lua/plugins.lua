@@ -103,14 +103,14 @@ return require('packer').startup(function(use)
   }
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    requires = 'nvim-tree/nvim-web-devicons',
     config = function()
         require("config/lualine")
     end
   }
   use {
     'folke/trouble.nvim',
-    requires = 'kyazdani42/nvim-web-devicons',
+    requires = 'nvim-tree/nvim-web-devicons',
     config = function()
         require("config/trouble")
     end,
@@ -141,7 +141,7 @@ return require('packer').startup(function(use)
   }
   use {
     'alvarosevilla95/luatab.nvim',
-    requires='kyazdani42/nvim-web-devicons',
+    requires='nvim-tree/nvim-web-devicons',
     config = function()
         require("config/luatab")
     end
@@ -151,7 +151,7 @@ return require('packer').startup(function(use)
   }
   use {
     'simrat39/rust-tools.nvim',
-    disable=false
+    disable=true
   }
   use {
     'github/copilot.vim',
