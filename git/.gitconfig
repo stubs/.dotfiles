@@ -25,7 +25,7 @@
     aliases = config --get-regexp alias
 
 [core]
-    pager = delta --light
+    pager = delta
 	autocrlf = input
 
 [interactive]

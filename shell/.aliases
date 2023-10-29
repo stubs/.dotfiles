@@ -2,7 +2,7 @@
 
 # Custom GREP syntax highlights
 alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
+alias egrep='grep -E --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # Custom ls command output aliases
