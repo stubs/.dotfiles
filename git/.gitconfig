@@ -48,5 +48,5 @@
     name = Aaron Gonzalez
     email = a.gonzalez979@gmail.com
 
-[includeIf "gitdir:~/dev/density/"]
-    path = ~/.gitconfig-density
+[includeIf "gitdir:~/dev/ddm/"]
+    path = ~/.gitconfig-dotdash
