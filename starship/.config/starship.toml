@@ -73,6 +73,8 @@ $character"""
 [directory]
 truncation_symbol = " …/"
 
-[gcloud]
+[package]
 disabled = true
 
+[docker_context]
+disabled = true
