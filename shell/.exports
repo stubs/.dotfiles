@@ -30,18 +30,18 @@ export GOPATH=$HOME/dev/work/go
 export PATH=$PATH:$GOPATH/bin
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
 
 # Virtualenvwrapper stuff
-export PROJECT_HOME=$HOME/dev
-export VIRTUALENVWRAPPER_PYTHON="$HOME"/.pyenv/shims/python # depends on pyenv python ATM
-export VIRTUALENVWRAPPER_VIRTUALENV="$HOME"/.pyenv/shims/python3
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="-m venv"
-export VIRTUALENVWRAPPER_VIRTUALENV_CLONE=$(brew --prefix)/bin/virtualenv-clone
-source $(brew --prefix)/bin/virtualenvwrapper.sh
+# export PROJECT_HOME=$HOME/dev
+# export VIRTUALENVWRAPPER_PYTHON="$HOME"/.pyenv/shims/python # depends on pyenv python ATM
+# export VIRTUALENVWRAPPER_VIRTUALENV="$HOME"/.pyenv/shims/python3
+# export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="-m venv"
+# export VIRTUALENVWRAPPER_VIRTUALENV_CLONE=$(brew --prefix)/bin/virtualenv-clone
+# source $(brew --prefix)/bin/virtualenvwrapper.sh
 
 
 
