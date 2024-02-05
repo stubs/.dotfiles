@@ -22,9 +22,6 @@ fi
 alias ..='cd ..'
 alias ...='cd ..; cd ..'
 
-# file counts in dirs
-alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | uniq -c'
-
 # brew stuff
 alias bu='brew update && brew outdated --cask --greedy'
 
@@ -32,3 +29,8 @@ alias bu='brew update && brew outdated --cask --greedy'
 if command -v bat &> /dev/null; then
     alias cat='bat --theme="Solarized (light)"'
 fi
+
+# work laziness
+alias v='nvim'
+alias repos='cd ~/dev/ddm/ && ls -l'
+alias proofs='cd ~/dev/proofs/ && ls -l'
