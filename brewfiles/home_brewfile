@@ -1,8 +1,8 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-# Automatic configure script builder
 brew "alacritty"
+# Automatic configure script builder
 brew "autoconf"
 brew "bash"
 brew "bat"
