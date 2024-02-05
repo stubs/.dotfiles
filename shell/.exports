@@ -6,7 +6,7 @@ done
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export TERM='xterm'
+export TERM='xterm-256color'
 
 # Adding custom colors to bash_profile
 export PS1="[\T] \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\[\033[32m\]\$(parse_git_branch)\[\033[00m\]\$ "
@@ -28,22 +28,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 # golang stuff
 export GOPATH=$HOME/dev/work/go
 export PATH=$PATH:$GOPATH/bin
-
-# pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
-
-# Virtualenvwrapper stuff
-# export PROJECT_HOME=$HOME/dev
-# export VIRTUALENVWRAPPER_PYTHON="$HOME"/.pyenv/shims/python # depends on pyenv python ATM
-# export VIRTUALENVWRAPPER_VIRTUALENV="$HOME"/.pyenv/shims/python3
-# export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="-m venv"
-# export VIRTUALENVWRAPPER_VIRTUALENV_CLONE=$(brew --prefix)/bin/virtualenv-clone
-# source $(brew --prefix)/bin/virtualenvwrapper.sh
-
-
 
 # work vs home
 if [[ $USER = 'agonzalez' ]]; then # && $HOSTNAME = "ip-192-168"* ]]; then
