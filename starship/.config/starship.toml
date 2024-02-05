@@ -70,6 +70,12 @@ $status\
 $shell\
 $character"""
 
+[gcloud]
+format = '[$symbol$active]($style) '
+
+[aws]
+disabled = true
+
 [directory]
 truncation_symbol = " …/"
 
