@@ -34,3 +34,8 @@ fi
 alias v='nvim'
 alias repos='cd ~/dev/ddm/ && ls -l'
 alias proofs='cd ~/dev/proofs/ && ls -l'
+alias tls='tmux ls'
+alias tkill='tmux kill-server'
+
+# sesh
+alias t='sesh connect $(sesh list | fzf)'
