@@ -14,7 +14,7 @@ vim.o.foldenable = false        	-- dont fold by default
 vim.o.foldmethod = 'indent'              -- fold based on indent
 vim.o.foldnestmax = 3                  -- deepest fold is 3 levels
 vim.o.grepprg= 'rg --vimgrep --no-heading --smart-case'
-vim.o.guifont='FiraCode_Nerd_Font'
+-- vim.o.guifont='FiraCode_Nerd_Font_Mono'
 vim.o.hidden = true
 vim.o.history = 50                      -- keep 50 lines of command line history
 vim.o.hlsearch = true
@@ -47,5 +47,22 @@ vim.diagnostic.config({
   float = { source = true }
 })
 
+local function lspSymbol(name, icon)
+vim.fn.sign_define(
+	'DiagnosticSign' .. name,
+	{ text = icon, texthl = 'DiagnosticSign' .. name }
+)
+end
+lspSymbol('Error', '')
+lspSymbol('Information', '')
+lspSymbol('Hint', '')
+lspSymbol('Info', '')
+lspSymbol('Warn', '')
+
 -- nicer win sep
 vim.cmd([[hi WinSeparator guibg=None]])
+
+-- For working with Jenkinsfiles
+vim.cmd([[
+    autocmd BufNewFile,BufRead Jenkinsfile set syntax=groovy
+]])
