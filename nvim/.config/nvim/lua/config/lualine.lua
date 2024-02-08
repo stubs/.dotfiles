@@ -115,7 +115,7 @@ ins_left {
         t = colors.red,
     }
     vim.api.nvim_command('hi LualineMode guifg='..mode_color[vim.fn.mode()]..' guibg='..colors.bg)
-    return ''
+    return ''
   end,
   color = 'LualineMode',
   padding = { right = 1 },
@@ -131,6 +131,26 @@ ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
   color = { fg = colors.magenta, gui = 'bold' },
+}
+
+ins_left {
+  function()
+    local venv = require('venv-selector').get_active_venv()
+    local venv_env_var = vim.fn.getenv("VIRTUAL_ENV")
+
+    if venv then
+      local venv_parts = vim.fn.split(venv, "/")
+      local venv_name = venv_parts[#venv_parts]
+      return "(" .. venv_name .. ")"
+    elseif venv_env_var ~= vim.NIL then
+      local venv_parts = vim.fn.split(venv_env_var, "/")
+      local venv_name = venv_parts[#venv_parts]
+      return "(" .. venv_name .. ")"
+    else
+      return "Select venv"
+    end
+  end,
+  color = { fg = colors.yellow, gui = 'bold' },
 }
 
 ins_left { 'location' }
@@ -201,7 +221,7 @@ ins_right {
 ins_right {
   'diff',
   -- Is it me or the symbol for modified us really weird
-  symbols = { added = ' ', modified = '柳 ', removed = ' ' },
+  symbols = { added = ' ', modified = ' ', removed = ' ' },
   diff_color = {
     added = { fg = colors.green },
     modified = { fg = colors.orange },
