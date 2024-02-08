@@ -28,6 +28,7 @@ end
 require('telescope').setup{
     defaults = {
         -- path_display = {'smart'},
+        layout_strategy="vertical",
         mappings = {
             i = {
                 ["<TAB>"] = actions.toggle_selection,
@@ -40,14 +41,14 @@ require('telescope').setup{
         },
     },
     pickers = {
-        git_status = {
-            layout_strategy='vertical'
-        },
         git_files = {
-            prompt_title=" GIT FILES "
+            prompt_title=" GIT FILES ",
         },
         buffers = {
             sort_mru = true
+        },
+        find_files = {
+            find_command = {'rg', '--files', '--hidden', '-g', '!.git'}
         }
     },
     extensions = {
@@ -61,3 +62,4 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('aerial')
+require("telescope").load_extension("yaml_schema")
