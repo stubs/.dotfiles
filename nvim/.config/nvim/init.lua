@@ -17,6 +17,8 @@ require("config/lualine")
 require("config/luasnip")
 require("config/luatab")
 require("config/mason") -- mason before nvim-lspconfig required
+require("config/mini-indentscope")
+require("config/noice")
 require("config/null-ls")
 require("config/nvim-cmp")
 require("config/nvim-dap")
