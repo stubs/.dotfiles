@@ -82,3 +82,7 @@ keymap('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', opts)
 
 -- diffview
 -- keymap('n', '<leader>D', ':DiffviewOpen<CR>', opts)
+
+-- oil
+keymap('n', '<leader>o', ':Oil --float<CR>', opts)
+
