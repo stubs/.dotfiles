@@ -4,9 +4,9 @@ vim.cmd([[
 
 -- TODO update this to run automatically on all occasions.
 vim.cmd([[
-    augroup TabActivatedAutocmd
+    augroup NvimStartupAutocmd
     autocmd!
-    autocmd TabEnter * lua require('venv-selector').retrieve_from_cache()
+    autocmd VimEnter * lua require('venv-selector').retrieve_from_cache()
     augroup END
 ]])
 
