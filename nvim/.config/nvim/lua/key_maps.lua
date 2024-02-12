@@ -8,15 +8,18 @@ local opts = { noremap=true, silent=true }
 local keymap = vim.api.nvim_set_keymap
 
 vim.g.mapleader = ' '                                                                                   -- Rebind leader key
-keymap('', '<C-h>', '<C-w>h', opts)                                                                     -- bind Ctrl+<movement> keys to move around the windows/splits
-keymap('', '<C-j>', '<C-w>j', opts)
-keymap('', '<C-k>', '<C-w>k', opts)
-keymap('', '<C-l>', '<C-w>l', opts)
+
+-- NOTE: deprecated by nvim-tmux-navigation plugin
+-- keymap('', '<C-h>', '<C-w>h', opts)                                                                  -- bind Ctrl+<movement> keys to move around the windows/splits
+-- keymap('', '<C-j>', '<C-w>j', opts)
+-- keymap('', '<C-k>', '<C-w>k', opts)
+-- keymap('', '<C-l>', '<C-w>l', opts)
+
 keymap('n', '<Left>', ':-tabnext<CR>', opts)
 keymap('n', '<Right>', ':+tabnext<CR>', opts)
 keymap('i', '<C-s>', '<esc>:update<CR>', opts)
-keymap('', '<Leader>x', ':%s/\\s\\+$//', opts)                                                          -- Alternate File
 keymap('n', '<C-s>', ':update<CR>', opts)                                                               -- Quick save
+keymap('', '<Leader>x', ':%s/\\s\\+$//', opts)                                                          -- remove extra whitespace
 keymap('n', '<Leader>`', '<C-^>', opts)                                                                 -- Alternate File
 -- keymap('n', '<Leader>d', 'oimport ipdb; ipdb.set_trace()  # <<<<<<<<<< BREAKPOINT<esc>', opts)       -- Ipdb breakpoint
 keymap('n', '<Leader>n', ':nohl<CR>', opts)                                                             -- 86 highlight
