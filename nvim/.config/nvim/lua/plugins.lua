@@ -26,7 +26,7 @@ return require("packer").startup(function(use)
     use {"lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim"}
     use {"linux-cultist/venv-selector.nvim", requires = {"neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python"}}
     use {"mfussenegger/nvim-dap"}
-    use {"mfussenegger/nvim-dap-python", requires  = "mfussenegger/nvim-dap"}
+    use {"mfussenegger/nvim-dap-python", requires = "mfussenegger/nvim-dap"}
     use {"morhetz/gruvbox"}
     use {"neovim/nvim-lspconfig"}
     use {"numToStr/Comment.nvim"}
@@ -35,7 +35,7 @@ return require("packer").startup(function(use)
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
     use {"nvim-telescope/telescope.nvim", requires = "nvim-lua/plenary.nvim"}
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    use {"rcarriga/nvim-dap-ui", requires  = "mfussenegger/nvim-dap"}
+    use {"rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap"}
     use {"rebelot/kanagawa.nvim"}
     use {"rmagatti/goto-preview"}
     use {"simrat39/rust-tools.nvim", disable = true}
@@ -49,6 +49,10 @@ return require("packer").startup(function(use)
     use {"wbthomason/packer.nvim"}  -- have packer manage itself
     use {"williamboman/mason-lspconfig.nvim"}
     use {"williamboman/mason.nvim"}
+    use {"echasnovski/mini.indentscope"}
+    use {"folke/noice.nvim", requires = {"rcarriga/nvim-notify", "MunifTanjim/nui.nvim"}}
+    use {"ggandor/leap.nvim"}
+    use {"alexghergh/nvim-tmux-navigation"}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
