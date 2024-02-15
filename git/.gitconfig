@@ -10,6 +10,7 @@
     # Show verbose output about tags, branches or remotes
     tags = tag -l
     branches = branch -a
+    b = !~/.dotfiles/git/better-branch.sh
     remotes = remote -v
 
     # New Branch
