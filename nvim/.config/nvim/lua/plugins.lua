@@ -53,6 +53,7 @@ return require("packer").startup(function(use)
     use {"folke/noice.nvim", requires = {"rcarriga/nvim-notify", "MunifTanjim/nui.nvim"}}
     use {"ggandor/leap.nvim"}
     use {"alexghergh/nvim-tmux-navigation"}
+    use {"nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter", requires = "nvim-treesitter/nvim-treesitter"}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
