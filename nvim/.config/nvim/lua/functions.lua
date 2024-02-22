@@ -7,6 +7,7 @@ vim.cmd([[
     augroup NvimStartupAutocmd
     autocmd!
     autocmd VimEnter * lua require('venv-selector').retrieve_from_cache()
+    autocmd VimEnter * lua require("twilight").toggle()
     augroup END
 ]])
 
