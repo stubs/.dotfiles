@@ -4,6 +4,7 @@ require("mason-lspconfig").setup({
         "bashls",
         "dockerls",
         "lua_ls",
+        "marksman",
         "pyright",
         "yamlls",
     },

@@ -3,8 +3,8 @@ require('nvim-treesitter.configs').setup({
         'bash',
         'lua',
         'python',
-        "markdown",
-        "markdown_inline",
+        -- "markdown",
+        -- "markdown_inline",
         "regex",
     },
     highlight = {

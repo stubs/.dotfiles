@@ -57,6 +57,11 @@ require'lspconfig'.lua_ls.setup {
     },
 }
 
+require('lspconfig').marksman.setup{
+    capabilities = capabilities,
+    on_attach=on_attach
+}
+
 require('lspconfig').pyright.setup{
     capabilities = capabilities,
     on_attach=on_attach
