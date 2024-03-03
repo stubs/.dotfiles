@@ -54,6 +54,9 @@ return require("packer").startup(function(use)
     use {"ggandor/leap.nvim"}
     use {"alexghergh/nvim-tmux-navigation"}
     use {"nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter", requires = "nvim-treesitter/nvim-treesitter"}
+    use {"nvim-focus/focus.nvim"}
+    use {"vim-pandoc/vim-pandoc"}
+    use {"vim-pandoc/vim-pandoc-syntax"}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

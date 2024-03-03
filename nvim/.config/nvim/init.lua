@@ -35,6 +35,7 @@ require("config/telescope")
 require("config/todo-comments")
 require("config/trouble")
 require("config/venv-selector")
+require("config/focus")
 
 -- require("config/yaml-companion")
 
