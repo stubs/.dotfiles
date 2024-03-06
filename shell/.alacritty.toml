@@ -6,10 +6,11 @@ import = [
     "~/.config/alacritty/themes/themes/gruvbox_dark.toml"
 ]
 
-[cursor.style]
-blinking = "Off"
+[cursor]
+blink_timeout = 0
 
-[cursor.vi_mode_style]
+[cursor.style]
+shape = "Block"
 blinking = "On"
 
 [env]
