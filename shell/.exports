@@ -29,30 +29,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 export GOPATH=$HOME/dev/work/go
 export PATH=$PATH:$GOPATH/bin
 
-# work vs home
-if [[ $USER = 'agonzalez' ]]; then # && $HOSTNAME = "ip-192-168"* ]]; then
-
-    # Virtualenvwrapper stuff
-    export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python3
-
-    # pyspark use Jupyter for dev
-    export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-    export SPARK_HOME=/Users/agonzalez/Downloads/spark-2.4.7-bin-hadoop2.6
-    export PYSPARK_DRIVER_PYTHON=jupyter
-    export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
-
-    # aws
-    export AWS_PROFILE=dotdash-dataops
-
-    # GCLOUD SDK
-    export CLOUDSDK_PYTHON=/usr/bin/python3
-    # export CLOUDSDK_BQ_PYTHON=/Users/agonzalez/.pyenv/versions/2.7.16/bin/python2
-    if [ -d "$HOME/google-cloud-sdk/bin" ]; then export PATH=$PATH:~/google-cloud-sdk/bin; fi
-
-    if [ "${arch_name}" = "x86_64" ]; then
-        export PATH="$(brew --prefix libpq)/bin:$PATH"
-        export CFLAGS="-I$(brew --prefix sqlite)/include -I$(brew --prefix openssl@1.1)/include -I$(brew --prefix readline)/include -I$(brew --prefix zlib)/include -I$(brew --prefix bzip2)/include -I$(xcrun --show-sdk-path)/usr/include"
-        export LDFLAGS="-L$(brew --prefix sqlite)/lib -L$(brew --prefix openssl@1.1)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib -L$(brew --prefix libpq)/lib"
-        export CPPFLAGS="-I$(brew --prefix libpq)/include"
-    fi
-fi
+# personal scripts
+export DOTFILES="$HOME/.dotfiles"
+export PATH=$DOTFILES/scripts:$PATH
