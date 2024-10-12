@@ -25,6 +25,20 @@
     # List aliases
     aliases = config --get-regexp alias
 
+    # quick fixup!
+    fixup = !git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -8 | xargs -o git commit --fixup
+    squash = !git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -8 | xargs -o git commit --squash
+
+    # amends
+    ca = commit --amend
+    ce = commit --amend --no-edit
+
+    # clear out all merged branches locally. bc == branch clean
+    bc = !git branch --merged | grep -vP '(^\\*|main|master)' | xargs git branch -d
+
+[commit]
+    template = ~/.dotfiles/git/.gitmessage
+
 [core]
     pager = delta
 	autocrlf = input
