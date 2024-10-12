@@ -1,4 +1,16 @@
-#!/bin/bash
+#!/bin/bash -l
+#
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title workday journal
+# @raycast.mode compact
+
+# Optional parameters:
+# @raycast.icon 📝
+
+# Documentation:
+# @raycast.description template for daily work journal & notes
+# @raycast.author aaron g
 
 today=$(date +"%Y-%m-%d")
 tomorrow=$(gdate -d "tomorrow" '+%Y-%m-%d')
@@ -42,4 +54,4 @@ if [ ! -f "$file" ]; then
 fi
 
 # Open the daily note at the bottom of the file in insert mode
-nvim '+ normal Gzzo' "$file"
+# nvim '+ normal Gzzo' "$file"

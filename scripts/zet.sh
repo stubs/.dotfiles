@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title work zet
+# @raycast.mode compact
+
+# Optional parameters:
+# @raycast.icon 📝
+# @raycast.argument1 { "type": "text", "placeholder": "filename without .md extension.", "percentEncoded": true }
+
+# Documentation:
+# @raycast.description template for specific zet work note
+# @raycast.author aaron g
+
 
 # function to prompt the user for a filename
 get_filename() {
@@ -31,7 +44,7 @@ open_file() {
 		echo -en "\n"
         echo "### TODO"
 		echo -en "\n"
-        echo "[ ] "
+        echo "- [ ] "
 		echo -en "\n"
 		echo -en "\n"
         echo "### Notes"
@@ -45,7 +58,9 @@ open_file() {
 	} >> "$1/$filename.md"
 
 	# Open the file in Neovim
-	nvim '+ normal ggzzi' "$1/$filename.md"
+	#nvim '+ normal ggzzi' "$1/$filename.md"
+
+    echo "created $1/$filename.md"
 }
 
 # Prompt the user if no filename is provided
