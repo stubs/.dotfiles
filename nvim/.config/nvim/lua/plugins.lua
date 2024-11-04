@@ -24,7 +24,7 @@ return require("packer").startup(function(use)
     use {"hrsh7th/nvim-cmp", requires = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lsp", "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets"}}
     use {"jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim"}
     use {"lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim"}
-    use {"linux-cultist/venv-selector.nvim", requires = {"neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python"}}
+    use {"linux-cultist/venv-selector.nvim", branch = "regexp", requires = {"neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python"}}
     use {"mfussenegger/nvim-dap"}
     use {"mfussenegger/nvim-dap-python", requires = "mfussenegger/nvim-dap"}
     use {"morhetz/gruvbox"}
@@ -33,9 +33,9 @@ return require("packer").startup(function(use)
     use {"nvim-lua/plenary.nvim"}
     use {"nvim-lualine/lualine.nvim", requires = "nvim-tree/nvim-web-devicons"}
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
-    use {"nvim-telescope/telescope.nvim", requires = "nvim-lua/plenary.nvim"}
+    use {"nvim-telescope/telescope.nvim", tag = "0.1.5", requires = "nvim-lua/plenary.nvim"}
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    use {"rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap"}
+    use {"rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap", disable = true}
     use {"rebelot/kanagawa.nvim"}
     use {"rmagatti/goto-preview"}
     use {"simrat39/rust-tools.nvim", disable = true}
@@ -57,6 +57,8 @@ return require("packer").startup(function(use)
     use {"nvim-focus/focus.nvim"}
     use {"vim-pandoc/vim-pandoc"}
     use {"vim-pandoc/vim-pandoc-syntax"}
+    -- use {"ThePrimeagen/git-worktree.nvim"}
+    use {"polarmutex/git-worktree.nvim", tag = "2.0.0"}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -4,7 +4,7 @@ vim.cmd([[
 ]])
 
 -- Settings
-vim.g.colors_name = 'kanagawa'
+vim.cmd([[colorscheme kanagawa]])
 vim.o.ai = true                         -- always vim.o.autoindenting on
 vim.o.background = 'dark'
 vim.o.backup = false
@@ -12,7 +12,7 @@ vim.o.compatible = false	    	-- Use Vim defaults (much better!)
 vim.o.expandtab = true                  -- use the appropriate number of spaces to insert a <Tab>
 vim.o.foldenable = false        	-- dont fold by default
 vim.o.foldmethod = 'indent'              -- fold based on indent
-vim.o.foldnestmax = 3                  -- deepest fold is 3 levels
+vim.o.foldnestmax = 5                  -- deepest fold is 3 levels
 vim.o.grepprg= 'rg --vimgrep --no-heading --smart-case'
 -- vim.o.guifont='FiraCode_Nerd_Font_Mono'
 vim.o.hidden = true

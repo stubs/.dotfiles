@@ -47,7 +47,7 @@ keymap('n', '<Leader>gb', ':lua require "telescope.builtin".git_bcommits() <CR>'
 keymap('n', '<Leader>aa', ':lua require "telescope".extensions.aerial.aerial() <CR>', opts)
 
 -- trouble key bindings
-keymap("n", "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
+keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", opts)
 keymap("n", "gr", "<cmd>Trouble lsp_references<cr>", opts)
 keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opts)
 keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opts)
@@ -61,6 +61,7 @@ keymap('n', 'gD', ':lua require("goto-preview").close_all_win()<CR>', opts)
 -- lsp key bindings
 keymap('n', '<Leader>[', '<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>', opts)
 keymap('n', '<Leader>]', '<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>', opts)
+keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 --keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 --keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 --keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
@@ -89,3 +90,8 @@ keymap('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', opts)
 -- oil
 keymap('n', '<leader>o', ':Oil --float<CR>', opts)
 
+-- twilight
+keymap('n', '<leader>t', ':Twilight<CR>', opts)
+
+-- git-worktree
+keymap('n', '<leader>w', ':lua require("telescope").extensions.git_worktree.git_worktree()<CR>', opts)

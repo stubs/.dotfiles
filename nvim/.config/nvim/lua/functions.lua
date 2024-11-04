@@ -3,13 +3,13 @@ vim.cmd([[
 ]])
 
 -- TODO update this to run automatically on all occasions.
-vim.cmd([[
-    augroup NvimStartupAutocmd
-    autocmd!
-    autocmd VimEnter * lua require('venv-selector').retrieve_from_cache()
-    autocmd VimEnter * lua require("twilight").toggle()
-    augroup END
-]])
+-- vim.cmd([[
+--     augroup NvimStartupAutocmd
+--     autocmd!
+--     autocmd VimEnter * lua require('venv-selector').retrieve_from_cache()
+--     autocmd VimEnter * lua require("twilight").toggle()
+--     augroup END
+-- ]])
 
 local M = {}
 M.python_run = function()
