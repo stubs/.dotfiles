@@ -6,12 +6,12 @@ alias egrep='grep -E --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # Custom ls command output aliases
-if command -v exa &> /dev/null; then
-    alias ls='exa -F --icons --group-directories-first'
-    alias ll='exa -lhF --git --icons --group-directories-first'
-    alias l.='exa -alhF --git --icons --group-directories-first'
-    alias tree='exa -aFT --icons --group-directories-first -I .git'
-    alias dtree='exa -aFT --icons --group-directories-first -I .git -D'
+if command -v eza &> /dev/null; then
+    alias ls='eza -F --icons --group-directories-first'
+    alias ll='eza -lhF --git --icons --group-directories-first'
+    alias l.='eza -alhF --git --icons --group-directories-first'
+    alias tree='eza -aFT --icons --group-directories-first -I .git'
+    alias dtree='eza -aFT --icons --group-directories-first -I .git -D'
 else
     alias ls='ls -GFh'
     alias ll='ls -la'
@@ -36,6 +36,10 @@ alias repos='cd ~/dev/ddm/ && ls -l'
 alias proofs='cd ~/dev/proofs/ && ls -l'
 alias tls='tmux ls'
 alias tkill='tmux kill-server'
+alias gconfig='gcloud config configurations list | fzf \
+    --header-lines=1 \
+    --bind "enter:become(gcloud config configurations activate {1} && echo && gcloud config list | head -n -1)"\
+'
 
 # sesh
 alias t='sesh connect $(
