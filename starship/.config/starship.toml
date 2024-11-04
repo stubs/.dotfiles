@@ -84,3 +84,9 @@ disabled = true
 
 [docker_context]
 disabled = true
+
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = '%T'
+utc_time_offset = 'local'
