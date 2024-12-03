@@ -41,6 +41,10 @@ What do I want to achieve today and tomorrow?
 
 - [ ]
 
+## Unplanned TODO
+
+- [ ]
+
 ## Notes
 EOF
 
