@@ -14,8 +14,8 @@ require("oil").setup({
     float = {
         -- Padding around the floating window
         padding = 2,
-        max_width = 50,
-        max_height = 30,
+        -- max_width = 50,
+        -- max_height = 30,
         border = "rounded",
         win_options = {
             winblend = 0,
