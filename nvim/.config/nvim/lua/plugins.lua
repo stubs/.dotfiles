@@ -41,7 +41,7 @@ return require("packer").startup(function(use)
     use {"simrat39/rust-tools.nvim", disable = true}
     use {"sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim", disable = true}
     use {"someone-stole-my-name/yaml-companion.nvim", requires = {"neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim"}}
-    use {"sourcegraph/sg.nvim", run = "nvim -l build/init.lua"}
+    use {"sourcegraph/sg.nvim", tag = "v1.0.8", run = "nvim -l build/init.lua"}
     use {"stevearc/aerial.nvim"}
     use {"stevearc/oil.nvim"}
     use {"tpope/vim-fugitive"}
