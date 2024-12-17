@@ -2,34 +2,16 @@ vim.cmd([[
     autocmd BufWritePost functions.lua source <afile> | source $MYVIMRC
 ]])
 
+-- TODO update this to run automatically on all occasions.
+-- vim.cmd([[
+--     augroup NvimStartupAutocmd
+--     autocmd!
+--     autocmd VimEnter * lua require('venv-selector').retrieve_from_cache()
+--     autocmd VimEnter * lua require("twilight").toggle()
+--     augroup END
+-- ]])
+
 local M = {}
-M.nvim_config_find = function()
-    require('telescope.builtin').find_files({
-        prompt_title = '~ NeoVim Configs ~',
-        cwd = '~/.config/nvim/'
-    })
-end
-
-M.workon_curator = function()
-    vim.cmd [[:tabnew | tcd /opt/dotdash/dataops/curator/]]
-    require('telescope.builtin').git_files({ prompt_title = '~ Curator ~', cwd = '/opt/dotdash/dataops/curator/' })
-end
-
-M.workon_aqueduct = function()
-    vim.cmd [[:tabnew | tcd /opt/dotdash/dataops/aqueduct/]]
-    require('telescope.builtin').git_files({ prompt_title = '~ Aqueduct ~', cwd = '/opt/dotdash/dataops/aqueduct/' })
-end
-
-M.workon_dotfiles = function()
-    vim.cmd [[:tabnew | tcd /opt/dotdash/dataops/dotfiles/]]
-    require('telescope.builtin').git_files({ prompt_title = '~ work dotfiles ~', cwd = '/opt/dotdash/dataops/dotfiles/' })
-end
-
-M.workon_nebula = function()
-    vim.cmd [[:tabnew | tcd /opt/dotdash/dataops/nebula/]]
-    require('telescope.builtin').git_files({ prompt_title = '~ Nebula ~', cwd = '/opt/dotdash/dataops/nebula/' })
-end
-
 M.python_run = function()
     vim.cmd [[
         :exec '!clear; python ' shellescape(@%, 1)
@@ -58,9 +40,7 @@ M.delta_git_status = function(opts)
     opts = opts or {}
     opts.previewer = delta
     -- opts.layout_strategy = 'vertical'
-
     builtin.git_status(opts)
 end
-
 
 return M

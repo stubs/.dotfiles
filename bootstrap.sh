@@ -14,7 +14,7 @@ curl -JLO 'https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Fira
 
 # Install Homebrew if not installed.
 command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; }
 
 ARCH_NAME="$(uname -m)"
 if [ "${ARCH_NAME}" = "x86_64" ]; then
@@ -34,6 +34,8 @@ command -v "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed >/dev/null 2>&1 || 
 # rm stow targets & stow deploy
 for dir in $(/bin/ls -d */)
 do
+    # files in dirs will just be copied (aka stowed) to the home dir.
+    # subdirs in each dir will also be copied (aka stowed) to the $HOME/subdir.... eg. dir/.config => $HOME/.config
     for file in $(/usr/bin/find ./"$dir" -maxdepth 1 -type f -ls | cut -d/ -f3)
     do
         rm "$HOME/$file" > /dev/null 2>&1

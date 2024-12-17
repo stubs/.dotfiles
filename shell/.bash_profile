@@ -15,16 +15,15 @@ for DOTFILE in ~/.functions ~/.aliases ~/.exports ~/.bash_auth; do
     [ -f $DOTFILE ] && source $DOTFILE
 done
 
-#haskell
+# haskell
 [ -f /Users/$USER/.ghcup/env ] && source /Users/$USER/.ghcup/env
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [[ -f ~/.bashrc ]] && source ~/.bashrc # ghcup-env
 
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+# starship prompt
 eval "$(starship init bash)"
-. "$HOME/.cargo/env"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "/Users/$USER/google-cloud-sdk/path.bash.inc" ]; then . "/Users/$USER/google-cloud-sdk/path.bash.inc"; fi

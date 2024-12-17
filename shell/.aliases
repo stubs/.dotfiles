@@ -2,16 +2,16 @@
 
 # Custom GREP syntax highlights
 alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
+alias egrep='grep -E --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # Custom ls command output aliases
-if command -v exa &> /dev/null; then
-    alias ls='exa -F --icons --group-directories-first'
-    alias ll='exa -lhF --git --icons --group-directories-first'
-    alias l.='exa -alhF --git --icons --group-directories-first'
-    alias tree='exa -aFT --icons --group-directories-first -I .git'
-    alias dtree='exa -aFT --icons --group-directories-first -I .git -D'
+if command -v eza &> /dev/null; then
+    alias ls='eza -F --icons --group-directories-first'
+    alias ll='eza -lhF --git --icons --group-directories-first'
+    alias l.='eza -alhF --git --icons --group-directories-first'
+    alias tree='eza -aFT --icons --group-directories-first -I .git'
+    alias dtree='eza -aFT --icons --group-directories-first -I .git -D'
 else
     alias ls='ls -GFh'
     alias ll='ls -la'
@@ -22,9 +22,6 @@ fi
 alias ..='cd ..'
 alias ...='cd ..; cd ..'
 
-# file counts in dirs
-alias files_in='find . -not -path "*/\.*" -type f -exec dirname {} \; | sort | uniq -c'
-
 # brew stuff
 alias bu='brew update && brew outdated --cask --greedy'
 
@@ -32,3 +29,27 @@ alias bu='brew update && brew outdated --cask --greedy'
 if command -v bat &> /dev/null; then
     alias cat='bat --theme="Solarized (light)"'
 fi
+
+# work laziness
+alias v='nvim'
+alias repos='cd ~/dev/ddm/ && ls -l'
+alias proofs='cd ~/dev/proofs/ && ls -l'
+alias tls='tmux ls'
+alias tkill='tmux kill-server'
+alias gconfig='gcloud config configurations list | fzf \
+    --header-lines=1 \
+    --bind "enter:become(gcloud config configurations activate {1} && echo && gcloud config list | head -n -1)"\
+'
+
+# sesh
+alias t='sesh connect $(
+	sesh list -H | fzf-tmux -p 50%,60% \
+		--no-sort --border-label "👷 chamba 👷" --prompt "⚡  " \
+		--header "  ^a all ^t tmux ^x zoxide ^f find ^d kill-session" \
+		--bind "tab:down,btab:up" \
+		--bind "ctrl-a:change-prompt(⚡  )+reload(sesh list)" \
+		--bind "ctrl-t:change-prompt(🪟  )+reload(sesh list -t)" \
+		--bind "ctrl-x:change-prompt(📁  )+reload(sesh list -z)" \
+		--bind "ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)" \
+		--bind "ctrl-d:execute(tmux kill-session -t {})+change-prompt(⚡  )+reload(sesh list)" \
+)'

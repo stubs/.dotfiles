@@ -70,9 +70,23 @@ $status\
 $shell\
 $character"""
 
+[gcloud]
+format = '[$symbol$active]($style) '
+
+[aws]
+disabled = true
+
 [directory]
 truncation_symbol = " …/"
 
-[gcloud]
+[package]
 disabled = true
 
+[docker_context]
+disabled = true
+
+[time]
+disabled = false
+format = '🕙[\[ $time \]]($style) '
+time_format = '%T'
+utc_time_offset = 'local'
