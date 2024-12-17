@@ -94,4 +94,4 @@ keymap('n', '<leader>o', ':Oil --float<CR>', opts)
 keymap('n', '<leader>t', ':Twilight<CR>', opts)
 
 -- git-worktree
-keymap('n', '<leader>w', ':lua require("telescope").extensions.git_worktree.git_worktree()<CR>', opts)
+-- keymap('n', '<leader>w', ':lua require("telescope").extensions.git_worktree.git_worktree()<CR>', opts)
