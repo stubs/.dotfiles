@@ -1,5 +1,11 @@
 require('venv-selector').setup({
-    parents=0,
-    path='~/.virtualenvs/'
+    settings = {
+        search = {
+            cwd = false,
+            virtualenvs = {
+                command = "$FD /bin/python$ ~/.virtualenvs --full-path -a -L",
+            }
+        },
+    },
 })
 
