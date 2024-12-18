@@ -24,9 +24,9 @@ return require("packer").startup(function(use)
     use {"hrsh7th/nvim-cmp", requires = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lsp", "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets"}}
     use {"jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim"}
     use {"lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim"}
-    use {"linux-cultist/venv-selector.nvim", branch = "regexp", requires = {"neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python"}}
-    use {"mfussenegger/nvim-dap"}
-    use {"mfussenegger/nvim-dap-python", requires = "mfussenegger/nvim-dap"}
+    use {"linux-cultist/venv-selector.nvim", branch = "regexp", requires = {"neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim"}}
+    use {"mfussenegger/nvim-dap", disable = true}
+    use {"mfussenegger/nvim-dap-python", disable = true, requires = "mfussenegger/nvim-dap"}
     use {"morhetz/gruvbox"}
     use {"neovim/nvim-lspconfig"}
     use {"numToStr/Comment.nvim"}
@@ -41,7 +41,7 @@ return require("packer").startup(function(use)
     use {"simrat39/rust-tools.nvim", disable = true}
     use {"sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim", disable = true}
     use {"someone-stole-my-name/yaml-companion.nvim", requires = {"neovim/nvim-lspconfig", "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim"}}
-    use {"sourcegraph/sg.nvim", tag = "v1.0.8", run = "nvim -l build/init.lua"}
+    use {"sourcegraph/sg.nvim", disable = true, tag = "v1.0.8", run = "nvim -l build/init.lua"}
     use {"stevearc/aerial.nvim"}
     use {"stevearc/oil.nvim"}
     use {"tpope/vim-fugitive"}
@@ -57,8 +57,8 @@ return require("packer").startup(function(use)
     use {"nvim-focus/focus.nvim"}
     use {"vim-pandoc/vim-pandoc"}
     use {"vim-pandoc/vim-pandoc-syntax"}
-    -- use {"ThePrimeagen/git-worktree.nvim"}
-    use {"polarmutex/git-worktree.nvim", tag = "2.0.0"}
+    use {"ThePrimeagen/git-worktree.nvim", disable = true}
+    use {"polarmutex/git-worktree.nvim", disable = true, tag = "2.0.0"}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
