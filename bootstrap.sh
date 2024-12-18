@@ -21,11 +21,12 @@ if [ "${ARCH_NAME}" = "x86_64" ]; then
   eval $(/usr/local/bin/brew shellenv)
   export SYSTEM_VERSION_COMPAT=1
 else
-  eval $(/opt/homebrew/bin/brew shellenv)
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+
 brew update
-command -v stow >/dev/null 2>&1 || brew install stow
+command -v "$(brew --prefix)"/bin/stow >/dev/null 2>&1 || brew install stow
 command -v "$(brew --prefix)"/opt/coreutils/libexec/gnubin/ls >/dev/null 2>&1 || brew install coreutils
 command -v "$(brew --prefix)"/opt/grep/libexec/gnubin/grep >/dev/null 2>&1 || brew install grep
 command -v "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed >/dev/null 2>&1 || brew install gnu-sed
@@ -36,16 +37,18 @@ for dir in $(/bin/ls -d */)
 do
     # files in dirs will just be copied (aka stowed) to the home dir.
     # subdirs in each dir will also be copied (aka stowed) to the $HOME/subdir.... eg. dir/.config => $HOME/.config
-    for file in $(/usr/bin/find ./"$dir" -maxdepth 1 -type f -ls | cut -d/ -f3)
+    for file in $(/usr/bin/find "$dir" -maxdepth 1 -type f -ls | cut -d/ -f3)
     do
+	echo "removing if in your ~ directory: $HOME/$file"
         rm "$HOME/$file" > /dev/null 2>&1
     done
     # rm .config/<subdir> prior to stowing
     for subdir in $("$(brew --prefix)"/opt/coreutils/libexec/gnubin/ls -aR1 --ignore='.git' "$dir" | grep -Eo "/\.config/\w+/" | uniq)
     do
+	echo "removing dir if in your ~ directory: $HOME$subdir"
         rm "$HOME$subdir" > /dev/null 2>&1
     done
-    echo "$dir" | cut -d/ -f1 | xargs -I{} "$(brew --prefix)"/opt/stow/bin/stow {}
+    echo "$dir" | cut -d/ -f1 | xargs -I{} "$(brew --prefix)"/bin/stow {}
 done
 
 
