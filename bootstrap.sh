@@ -52,6 +52,12 @@ do
 done
 
 
+# Alacritty themes I like:
+mkdir -p ~/.config/alacritty/themes/themes/
+curl -o .config/alacritty/themes/themes/gruvbox_dark.toml  https://raw.githubusercontent.com/alacritty/alacritty-theme/refs/heads/master/themes/gruvbox_dark.toml
+curl -o .config/alacritty/themes/themes/gruvbox_light.toml  https://raw.githubusercontent.com/alacritty/alacritty-theme/refs/heads/master/themes/gruvbox_light.toml
+
+
 # Install all dependencies. Make sure that the ./runcom/Brewfile is symlinked to ~/
 echo "Which brewfile to bundle install?"
 select yn in "$HOME/home_brewfile" "$HOME/work_brewfile"; do
@@ -60,6 +66,7 @@ select yn in "$HOME/home_brewfile" "$HOME/work_brewfile"; do
     "$HOME/work_brewfile" ) brew bundle --file="$HOME/work_brewfile" --no-lock; break;;
   esac
 done
+
 
 # Remove outdated versions from the cellar.
 brew cleanup
