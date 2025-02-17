@@ -85,3 +85,7 @@ chsh -s "$(brew --prefix)"/bin/bash
 
 # fzf keybindings and fuzzy comp
 "$(brew --prefix)"/opt/fzf/install
+
+
+# macosx defaults
+./osxdefaults.sh
