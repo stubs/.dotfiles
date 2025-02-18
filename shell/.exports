@@ -32,3 +32,5 @@ export PATH=$PATH:$GOPATH/bin
 # personal scripts
 export DOTFILES="$HOME/.dotfiles"
 export PATH=$DOTFILES/scripts:$PATH
+
+export EDITOR=$(brew --prefix)/bin/nvim
