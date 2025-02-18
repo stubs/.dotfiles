@@ -1,0 +1,14 @@
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-invert-fg-bg = true
+
+font-family = "Fira Code Regular Nerd Font Complete Mono"
+theme = dark:GruvboxDark,light:GruvboxLight
+
+title = " "
+macos-titlebar-style = hidden
+
+copy-on-select = true
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+quick-terminal-position = bottom
