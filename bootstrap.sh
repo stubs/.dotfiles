@@ -21,11 +21,12 @@ if [ "${ARCH_NAME}" = "x86_64" ]; then
   eval $(/usr/local/bin/brew shellenv)
   export SYSTEM_VERSION_COMPAT=1
 else
-  eval $(/opt/homebrew/bin/brew shellenv)
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+
 brew update
-command -v stow >/dev/null 2>&1 || brew install stow
+command -v "$(brew --prefix)"/bin/stow >/dev/null 2>&1 || brew install stow
 command -v "$(brew --prefix)"/opt/coreutils/libexec/gnubin/ls >/dev/null 2>&1 || brew install coreutils
 command -v "$(brew --prefix)"/opt/grep/libexec/gnubin/grep >/dev/null 2>&1 || brew install grep
 command -v "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed >/dev/null 2>&1 || brew install gnu-sed
@@ -36,17 +37,25 @@ for dir in $(/bin/ls -d */)
 do
     # files in dirs will just be copied (aka stowed) to the home dir.
     # subdirs in each dir will also be copied (aka stowed) to the $HOME/subdir.... eg. dir/.config => $HOME/.config
-    for file in $(/usr/bin/find ./"$dir" -maxdepth 1 -type f -ls | cut -d/ -f3)
+    for file in $(/usr/bin/find "$dir" -maxdepth 1 -type f -ls | cut -d/ -f3)
     do
+	echo "removing if in your ~ directory: $HOME/$file"
         rm "$HOME/$file" > /dev/null 2>&1
     done
     # rm .config/<subdir> prior to stowing
     for subdir in $("$(brew --prefix)"/opt/coreutils/libexec/gnubin/ls -aR1 --ignore='.git' "$dir" | grep -Eo "/\.config/\w+/" | uniq)
     do
+	echo "removing dir if in your ~ directory: $HOME$subdir"
         rm "$HOME$subdir" > /dev/null 2>&1
     done
-    echo "$dir" | cut -d/ -f1 | xargs -I{} "$(brew --prefix)"/opt/stow/bin/stow {}
+    echo "$dir" | cut -d/ -f1 | xargs -I{} "$(brew --prefix)"/bin/stow {}
 done
+
+
+# Alacritty themes I like:
+mkdir -p ~/.config/alacritty/themes/themes/
+curl -o .config/alacritty/themes/themes/gruvbox_dark.toml  https://raw.githubusercontent.com/alacritty/alacritty-theme/refs/heads/master/themes/gruvbox_dark.toml
+curl -o .config/alacritty/themes/themes/gruvbox_light.toml  https://raw.githubusercontent.com/alacritty/alacritty-theme/refs/heads/master/themes/gruvbox_light.toml
 
 
 # Install all dependencies. Make sure that the ./runcom/Brewfile is symlinked to ~/
@@ -57,6 +66,7 @@ select yn in "$HOME/home_brewfile" "$HOME/work_brewfile"; do
     "$HOME/work_brewfile" ) brew bundle --file="$HOME/work_brewfile" --no-lock; break;;
   esac
 done
+
 
 # Remove outdated versions from the cellar.
 brew cleanup
@@ -75,3 +85,7 @@ chsh -s "$(brew --prefix)"/bin/bash
 
 # fzf keybindings and fuzzy comp
 "$(brew --prefix)"/opt/fzf/install
+
+
+# macosx defaults
+./osxdefaults.sh
