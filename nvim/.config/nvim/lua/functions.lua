@@ -2,6 +2,23 @@ vim.cmd([[
     autocmd BufWritePost functions.lua source <afile> | source $MYVIMRC
 ]])
 
+local autocmd_group = vim.api.nvim_create_augroup(
+    "Custom auto-commands",
+    {clear = true})
+vim.api.nvim_create_autocmd({"BufWritePost"},
+    {
+        pattern = {"*.py"},
+        desc = "Auto ufmt Python files prior to saving",
+        callback = function()
+            local file_name = vim.api.nvim_buf_get_name(0) -- Get file name of file in current buffer
+            -- TODO: ufmt all py files if .venv/ in repo root has it or ~/.virtualenvs/
+            vim.cmd(':silent !"$(git rev-parse --show-toplevel)"/.venv/bin/ufmt format ' .. file_name)
+            vim.cmd(':silent !~/.virtualenvs/"$(basename $(git rev-parse --show-toplevel))"/bin/ufmt format ' .. file_name)
+            -- vim.cmd(":silent !~/.virtualenvs/conductor-dev/bin/ufmt -q format " .. file_name)
+        end,
+        group = autocmd_group,
+    })
+
 -- TODO update this to run automatically on all occasions.
 -- vim.cmd([[
 --     augroup NvimStartupAutocmd
