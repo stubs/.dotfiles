@@ -34,7 +34,8 @@ fi
 
 # work laziness
 alias v='nvim'
-alias repos='cd ~/dev/ddm/ && ls -l'
+alias repos='cd ~/dev/ && ls -l'
+alias ddm_repos='cd ~/dev/ddm/ && ls -l'
 alias proofs='cd ~/dev/proofs/ && ls -l'
 alias tls='tmux ls'
 alias tkill='tmux kill-server'
