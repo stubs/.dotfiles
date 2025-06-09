@@ -147,7 +147,7 @@ return require("packer").startup(function(use)
     }
     use {
         "sourcegraph/sg.nvim",
-        disable = true,
+        disable = false,
         tag = "v1.0.8",
         run = "nvim -l build/init.lua"
     }
@@ -221,8 +221,14 @@ return require("packer").startup(function(use)
     }
     use {"vim-pandoc/vim-pandoc"}
     use {"vim-pandoc/vim-pandoc-syntax"}
+    use {
+        "David-Kunz/gen.nvim",
+        commit = "e09a8dbffa139ad60d5b47998fcc8669ead1ebf4",
+        lock = true,
+    }
     use {"ThePrimeagen/git-worktree.nvim", disable = true}
     use {"polarmutex/git-worktree.nvim", disable = true, tag = "2.0.0"}
+    use {"sphamba/smear-cursor.nvim", commit = "8820b313e49a018c7d56fc309c51363c0e9ae653", lock = true}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -36,6 +36,8 @@ require("config/todo-comments")
 require("config/trouble")
 require("config/venv-selector")
 require("config/focus")
+require("config/gen")
+require("config/smear")
 
 -- require("config/yaml-companion")
 
