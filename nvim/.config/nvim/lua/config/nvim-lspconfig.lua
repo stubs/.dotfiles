@@ -66,6 +66,16 @@ require('lspconfig').pyright.setup{
     capabilities = capabilities,
     on_attach=on_attach
 }
+require('lspconfig').terraformls.setup{
+    capabilities = capabilities,
+    on_attach=on_attach
+}
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  pattern = {"*.tf", "*.tfvars"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
 
 
 -- local cfg = require("yaml-companion").setup({
