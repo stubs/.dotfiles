@@ -3,7 +3,7 @@ require('venv-selector').setup({
         search = {
             cwd = false,
             virtualenvs = {
-                command = "$FD /bin/python$ ~/.virtualenvs --full-path -a -L",
+                command = "fd '/bin/python$' ~/.virtualenvs/*/bin --full-path -a",
             }
         },
     },
