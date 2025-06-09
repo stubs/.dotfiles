@@ -51,7 +51,7 @@ keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", opts)
 keymap("n", "gr", "<cmd>Trouble lsp_references<cr>", opts)
 keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opts)
 keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opts)
-keymap("n", "<leader>xt", "<cmd>TodoTrouble<cr>", opts)
+keymap("n", "<leader>xt", "<cmd>TodoTelescope<cr>", opts)
 -- keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts)
 
 -- goto preview
