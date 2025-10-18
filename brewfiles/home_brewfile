@@ -48,6 +48,6 @@ cask "vlc"
 # trying these out
 brew "uv"
 cask "copilot"
-cash "ghostty"
+cask "ghostty"
 cask "google-cloud-sdk"
 cask "ollama"
