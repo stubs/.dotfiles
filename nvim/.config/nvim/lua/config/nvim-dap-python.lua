@@ -8,7 +8,7 @@ table.insert(require('dap').configurations.python, {
   request = 'launch',
   name = 'curator debugger',
   program = '${file}',
-  python = '/Users/agonzalez/.virtualenvs/curator/bin/python'
+  python = '/Users/aaron.gonzalez/.virtualenvs/curator-dev/bin/python'
 })
 
 table.insert(require('dap').configurations.python, {
@@ -16,13 +16,13 @@ table.insert(require('dap').configurations.python, {
   request = 'launch',
   name = 'aqueduct debugger',
   program = '${file}',
-  python = '/Users/agonzalez/.virtualenvs/aqueduct/bin/python'
+  python = '/Users/aaron.gonzalez/.virtualenvs/aqueduct-dev/bin/python'
 })
 
 table.insert(require('dap').configurations.python, {
   type = 'python',
   request = 'launch',
-  name = 'temp debugger',
+  name = 'conductor debugger',
   program = '${file}',
-  python = '/Users/agonzalez/.virtualenvs/async_test_env/bin/python'
+  python = '/Users/aaron.gonzalez/.virtualenvs/conductor-dev/bin/python'
 })
