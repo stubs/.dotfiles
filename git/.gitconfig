@@ -4,6 +4,8 @@
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
+    sb = !git branch --format='%(refname:short)' | fzf --preview 'git log --oneline --graph --decorate --color=always {}' --bind='enter:become(git switch {})'
+
     # View the current working tree status using the short format
     s = status -s
 

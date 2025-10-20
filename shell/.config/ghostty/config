@@ -1,3 +1,8 @@
+# Testing
+auto-update-channel = tip
+custom-shader = ./shaders/cursor_smear.glsl
+
+# Accepted
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-invert-fg-bg = true

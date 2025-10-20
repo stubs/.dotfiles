@@ -73,8 +73,17 @@ return require("packer").startup(function(use)
         lock = true,
         requires = {"neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim"}
     }
-    use {"mfussenegger/nvim-dap", disable = true}
-    use {"mfussenegger/nvim-dap-python", disable = true, requires = "mfussenegger/nvim-dap"}
+    use {
+        "mfussenegger/nvim-dap",
+        disable = false,
+        tag = "0.10.0"
+    }
+    use {
+        "mfussenegger/nvim-dap-python",
+        disable = false,
+        requires = "mfussenegger/nvim-dap",
+        commit = "261ce649d05bc455a29f9636dc03f8cdaa7e0e2c"
+    }
     use {
         "morhetz/gruvbox",
         commit = "f1ecde848f0cdba877acb0c740320568252cc482",
@@ -118,8 +127,9 @@ return require("packer").startup(function(use)
     }
     use {
         "rcarriga/nvim-dap-ui",
-        requires = "mfussenegger/nvim-dap",
-        disable = true
+        requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+        disable = false,
+        tag = "v4.0.0"
     }
     use {
         "rebelot/kanagawa.nvim",
@@ -133,7 +143,7 @@ return require("packer").startup(function(use)
     }
     use {
         "simrat39/rust-tools.nvim",
-        disable = true
+        disable = false
     }
     use {
         "sindrets/diffview.nvim",
@@ -147,7 +157,7 @@ return require("packer").startup(function(use)
     }
     use {
         "sourcegraph/sg.nvim",
-        disable = true,
+        disable = false,
         tag = "v1.0.8",
         run = "nvim -l build/init.lua"
     }
@@ -221,8 +231,14 @@ return require("packer").startup(function(use)
     }
     use {"vim-pandoc/vim-pandoc"}
     use {"vim-pandoc/vim-pandoc-syntax"}
+    use {
+        "David-Kunz/gen.nvim",
+        commit = "e09a8dbffa139ad60d5b47998fcc8669ead1ebf4",
+        lock = true,
+    }
     use {"ThePrimeagen/git-worktree.nvim", disable = true}
     use {"polarmutex/git-worktree.nvim", disable = true, tag = "2.0.0"}
+    use {"sphamba/smear-cursor.nvim", commit = "8820b313e49a018c7d56fc309c51363c0e9ae653", lock = true}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
