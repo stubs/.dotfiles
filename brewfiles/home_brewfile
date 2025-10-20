@@ -35,7 +35,6 @@ cask "alacritty"
 cask "arc"
 cask "amethyst"
 cask "authy" #TODO deprecate once mfa migrated to 1password
-cask "balenaetcher"
 cask "docker"
 cask "homerow"
 cask "iterm2"
