@@ -73,8 +73,17 @@ return require("packer").startup(function(use)
         lock = true,
         requires = {"neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim"}
     }
-    use {"mfussenegger/nvim-dap", disable = true}
-    use {"mfussenegger/nvim-dap-python", disable = true, requires = "mfussenegger/nvim-dap"}
+    use {
+        "mfussenegger/nvim-dap",
+        disable = false,
+        tag = "0.10.0"
+    }
+    use {
+        "mfussenegger/nvim-dap-python",
+        disable = false,
+        requires = "mfussenegger/nvim-dap",
+        commit = "261ce649d05bc455a29f9636dc03f8cdaa7e0e2c"
+    }
     use {
         "morhetz/gruvbox",
         commit = "f1ecde848f0cdba877acb0c740320568252cc482",
@@ -118,8 +127,9 @@ return require("packer").startup(function(use)
     }
     use {
         "rcarriga/nvim-dap-ui",
-        requires = "mfussenegger/nvim-dap",
-        disable = true
+        requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+        disable = false,
+        tag = "v4.0.0"
     }
     use {
         "rebelot/kanagawa.nvim",
