@@ -9,7 +9,7 @@ brew "bat"
 brew "coreutils"
 brew "eza"
 brew "git"
-brew "fzf"
+# brew "fzf"    # INFO migrated to justfile binary install
 brew "git-delta"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
@@ -18,7 +18,7 @@ brew "grep"
 brew "joshmedeski/sesh/sesh"
 brew "jq"
 brew "lua-language-server"
-brew "neovim"
+# brew "neovim"    # INFO migrated to justfile binary install
 brew "node"
 brew "ripgrep"
 brew "rust-analyzer"
@@ -31,7 +31,7 @@ brew "yq"
 brew "zoxide"
 cask "1password"
 cask "1password-cli"
-cask "alacritty"
+# cask "alacritty"  # TODO rm
 cask "arc"
 cask "amethyst"
 cask "authy" #TODO deprecate once mfa migrated to 1password
@@ -45,8 +45,8 @@ cask "transmission"
 cask "vlc"
 
 # trying these out
-brew "uv"
+# brew "uv"  # INFO migrated to binary install via pre-just.sh
 cask "copilot"
-cask "ghostty"
+# cask "ghostty"  # INFO migrated to binary install via justfile
 cask "google-cloud-sdk"
 cask "ollama"
