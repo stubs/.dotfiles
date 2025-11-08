@@ -13,10 +13,12 @@ fi
 # Symlink uv to /usr/local/bin
 if [ -f "$HOME/.local/bin/uv" ]; then
     sudo ln -sf "$HOME/.local/bin/uv" /usr/local/bin/uv
-    echo "✅ uv symlinked to /usr/local/bin"
+    sudo ln -sf "$HOME/.local/bin/uvx" /usr/local/bin/uvx
+    echo "✅ uv & uvx symlinked to /usr/local/bin"
 elif [ -f "$HOME/.cargo/bin/uv" ]; then
     sudo ln -sf "$HOME/.cargo/bin/uv" /usr/local/bin/uv
-    echo "✅ uv symlinked to /usr/local/bin"
+    sudo ln -sf "$HOME/.local/bin/uvx" /usr/local/bin/uvx
+    echo "✅ uv & uvx symlinked to /usr/local/bin"
 fi
 
 echo "✅ uv installation complete!"
