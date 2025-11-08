@@ -156,32 +156,32 @@ install-ghostty:
     else
         GHOSTTY_VERSION="1.2.2"
         echo "👻 Downloading and installing Ghostty ${GHOSTTY_VERSION}..."
-        
+
         # Download the DMG
         echo "  Downloading Ghostty.dmg..."
         curl -fsSL "https://release.files.ghostty.org/${GHOSTTY_VERSION}/Ghostty.dmg" -o /tmp/Ghostty.dmg
-        
+
         # Mount the DMG
         echo "  Mounting Ghostty.dmg..."
         hdiutil attach /tmp/Ghostty.dmg -quiet
-        
+
         # Copy the app to /Applications
         echo "  Copying Ghostty.app to /Applications..."
         cp -r /Volumes/Ghostty/Ghostty.app /Applications/
-        
+
         # Unmount the DMG
         echo "  Unmounting Ghostty.dmg..."
         hdiutil detach /Volumes/Ghostty -quiet
-        
+
         # Create symlink to /usr/local/bin (requires sudo)
         if [ ! -L /usr/local/bin/ghostty ]; then
             echo "  Creating symlink to /usr/local/bin/ghostty (requires sudo)..."
             sudo ln -sf "/Applications/Ghostty.app/Contents/MacOS/ghostty" /usr/local/bin/ghostty
         fi
-        
+
         # Clean up
         rm /tmp/Ghostty.dmg
-        
+
         echo "✅ Ghostty installed"
     fi
 
@@ -195,7 +195,7 @@ install-neovim:
     else
         NVIM_VERSION="0.10.3"
         ARCH_NAME="$(uname -m)"
-        
+
         # Determine architecture-specific download URL
         if [ "${ARCH_NAME}" = "x86_64" ]; then
             NVIM_URL="https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-macos-x86_64.tar.gz"
@@ -204,32 +204,32 @@ install-neovim:
             NVIM_URL="https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-macos-arm64.tar.gz"
             NVIM_DIR="nvim-macos-arm64"
         fi
-        
+
         echo "📝 Downloading and installing Neovim ${NVIM_VERSION}..."
-        
+
         # Download the tarball
         echo "  Downloading Neovim..."
         curl -fsSL "$NVIM_URL" -o /tmp/nvim-macos.tar.gz
-        
+
         # Remove "unknown developer" warning on macOS
         echo "  Removing quarantine attribute..."
         xattr -c /tmp/nvim-macos.tar.gz
-        
+
         # Extract the tarball
         echo "  Extracting Neovim..."
         tar xzf /tmp/nvim-macos.tar.gz -C /tmp
-        
+
         # Move to /usr/local/nvim (requires sudo)
         echo "  Moving Neovim to /usr/local/nvim (requires sudo)..."
         sudo mv "/tmp/${NVIM_DIR}" /usr/local/nvim
-        
+
         # Create symlink to /usr/local/bin
         echo "  Creating symlink to /usr/local/bin/nvim..."
         sudo ln -sf /usr/local/nvim/bin/nvim /usr/local/bin/nvim
-        
+
         # Clean up
         rm /tmp/nvim-macos.tar.gz
-        
+
         echo "✅ Neovim installed"
     fi
 
@@ -339,7 +339,7 @@ setup-fzf:
 
     ARCH_NAME="$(uname -m)"
     FZF_VERSION="0.66.0"
-    
+
     # Determine architecture-specific download URL
     if [ "${ARCH_NAME}" = "x86_64" ]; then
         FZF_URL="https://github.com/junegunn/fzf/releases/download/v${FZF_VERSION}/fzf-${FZF_VERSION}-darwin_amd64.tar.gz"
@@ -348,18 +348,18 @@ setup-fzf:
     fi
 
     echo "🔍 Installing FZF ${FZF_VERSION}..."
-    
+
     # Create permanent installation directory
     mkdir -p "$HOME/.local/bin"
-    
+
     # Download and extract fzf
     echo "  Downloading fzf from GitHub releases..."
     curl -fsSL "$FZF_URL" -o /tmp/fzf.tar.gz
-    
+
     echo "  Extracting fzf..."
     tar -xzf /tmp/fzf.tar.gz -C "$HOME/.local/bin"
     chmod +x "$HOME/.local/bin/fzf"
-    
+
     # Create symlink to /usr/local/bin (requires sudo)
     if [ ! -L /usr/local/bin/fzf ]; then
         echo "  Creating symlink to /usr/local/bin/fzf (requires sudo)..."
@@ -367,10 +367,10 @@ setup-fzf:
     else
         echo "  Symlink already exists at /usr/local/bin/fzf"
     fi
-    
+
     # Clean up
     rm /tmp/fzf.tar.gz
-    
+
     echo "✅ FZF installed to $HOME/.local/bin/fzf"
     echo "✅ Symlinked to /usr/local/bin/fzf"
     echo "ℹ️  Note: Shell keybindings should be configured in your shell config"
