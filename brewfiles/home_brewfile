@@ -30,7 +30,6 @@ brew "yq"
 brew "zoxide"
 cask "1password"
 cask "1password-cli"
-# cask "alacritty"  # TODO rm
 cask "arc"
 cask "amethyst"
 cask "authy" #TODO deprecate once mfa migrated to 1password
