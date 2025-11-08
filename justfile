@@ -14,6 +14,7 @@ setup: install-brew \
        install-ghostty \
        install-neovim \
        install-npm-lsp-servers \
+       install-crush \
        deploy-dotfiles \
        setup-shell \
        setup-fzf \
@@ -374,6 +375,49 @@ setup-fzf:
     echo "✅ Symlinked to /usr/local/bin/fzf"
     echo "ℹ️  Note: Shell keybindings should be configured in your shell config"
 
+# Install Crush binary from GitHub releases
+install-crush:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    ARCH_NAME="$(uname -m)"
+    CRUSH_VERSION="0.16.1"
+
+    # Determine architecture-specific download URL
+    if [ "${ARCH_NAME}" = "x86_64" ]; then
+        CRUSH_URL="https://github.com/charmbracelet/crush/releases/download/v${CRUSH_VERSION}/crush_${CRUSH_VERSION}_Darwin_x86_64.tar.gz"
+    else
+        CRUSH_URL="https://github.com/charmbracelet/crush/releases/download/v${CRUSH_VERSION}/crush_${CRUSH_VERSION}_Darwin_arm64.tar.gz"
+    fi
+
+    echo "💖 Installing Crush ${CRUSH_VERSION}..."
+
+    # Create permanent installation directory
+    mkdir -p "$HOME/.local/bin"
+
+    # Download and extract crush
+    echo "  Downloading crush from GitHub releases..."
+    curl -fsSL "$CRUSH_URL" -o /tmp/crush.tar.gz
+
+    echo "  Extracting crush..."
+    tar xzf /tmp/crush.tar.gz -C /tmp
+    mv /tmp/crush_${CRUSH_VERSION}_Darwin_arm64/crush "$HOME/.local/bin/crush"
+    chmod +x "$HOME/.local/bin/crush"
+
+    # Create symlink to /usr/local/bin (requires sudo)
+    if [ ! -L /usr/local/bin/crush ]; then
+        echo "  Creating symlink to /usr/local/bin/crush (requires sudo)..."
+        sudo ln -sf "$HOME/.local/bin/crush" /usr/local/bin/crush
+    else
+        echo "  Symlink already exists at /usr/local/bin/crush"
+    fi
+
+    # Clean up
+    rm /tmp/crush.tar.gz
+
+    echo "✅ Crush installed to $HOME/.local/bin/crush"
+    echo "✅ Symlinked to /usr/local/bin/crush"
+
 # Apply macOS system defaults
 macos-defaults:
     #!/usr/bin/env bash
@@ -403,7 +447,8 @@ dry-run:
     @echo "   ⚠️  WARNING: Removes existing dotfiles before stowing!"
     @echo "9. 🐚 Set Homebrew bash as default shell (requires sudo)"
     @echo "10. 🔍 Install FZF binary"
-    @echo "11. 🍎 Apply macOS system defaults"
+    @echo "11. 💖 Install Crush binary"
+    @echo "12. 🍎 Apply macOS system defaults"
     @echo ""
     @echo "To run full setup: ./justfile setup"
     @echo "To run individual steps: ./justfile <command-name>"
