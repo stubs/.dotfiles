@@ -18,7 +18,6 @@ brew "grep"
 brew "joshmedeski/sesh/sesh"
 brew "jq"
 brew "lua-language-server"
-# brew "neovim"    # INFO migrated to justfile binary install
 brew "node"
 brew "ripgrep"
 brew "rust-analyzer"
@@ -45,8 +44,6 @@ cask "transmission"
 cask "vlc"
 
 # trying these out
-# brew "uv"  # INFO migrated to binary install via pre-just.sh
 cask "copilot"
-# cask "ghostty"  # INFO migrated to binary install via justfile
 cask "google-cloud-sdk"
 cask "ollama"
