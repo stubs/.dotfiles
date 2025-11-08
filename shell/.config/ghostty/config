@@ -8,7 +8,7 @@ cursor-style = block
 cursor-invert-fg-bg = true
 
 font-family = "Fira Code Regular Nerd Font Complete Mono"
-theme = dark:GruvboxDark,light:GruvboxLight
+theme = dark:Gruvbox Dark,light:Gruvbox Light
 
 title = " "
 macos-titlebar-style = hidden
