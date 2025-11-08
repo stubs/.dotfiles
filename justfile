@@ -108,26 +108,6 @@ install-brewfile-work:
     brew cleanup
     echo "✅ Work brewfile installed"
 
-# Install core tools needed for dotfile management
-install-core-tools:
-    #!/usr/bin/env bash
-    set -euo pipefail
-
-    # Setup brew command
-    ARCH_NAME="$(uname -m)"
-    if [ "${ARCH_NAME}" = "x86_64" ]; then
-        eval $(/usr/local/bin/brew shellenv)
-    else
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
-
-    echo "🔧 Installing core tools..."
-    command -v "$(brew --prefix)"/bin/stow >/dev/null 2>&1 || brew install stow
-    command -v "$(brew --prefix)"/opt/coreutils/libexec/gnubin/ls >/dev/null 2>&1 || brew install coreutils
-    command -v "$(brew --prefix)"/opt/grep/libexec/gnubin/grep >/dev/null 2>&1 || brew install grep
-    command -v "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed >/dev/null 2>&1 || brew install gnu-sed
-    echo "✅ Core tools installed"
-
 # Download and install Fira Code Nerd Font
 install-fonts:
     #!/usr/bin/env bash
