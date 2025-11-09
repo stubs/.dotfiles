@@ -32,7 +32,6 @@ brew "yq"
 brew "zoxide"
 cask "1password"
 cask "arc"
-cask "authy" #TODO deprecate once mfa migrated to 1password
 cask "docker"
 cask "homerow"
 cask "iterm2"
