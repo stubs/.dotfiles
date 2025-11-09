@@ -9,7 +9,6 @@ brew "bat"
 brew "coreutils"
 brew "eza"
 brew "git"
-# brew "fzf"    # INFO migrated to justfile binary install
 brew "git-delta"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"

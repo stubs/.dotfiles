@@ -10,7 +10,6 @@ brew "cscope"
 brew "coreutils"
 brew "eza"
 brew "git"
-brew "fzf"
 brew "git-delta"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
