@@ -9,15 +9,14 @@ default:
 # Complete setup - runs everything in order
 setup: install-brew \
        install-brewfile \
-       install-core-tools \
        install-fonts \
        install-ghostty \
        install-neovim \
        install-npm-lsp-servers \
        install-crush \
+       install-fzf \
        deploy-dotfiles \
        setup-shell \
-       setup-fzf \
        macos-defaults
     @echo "✅ Setup complete! You may need to restart your terminal."
 
@@ -313,7 +312,7 @@ setup-shell:
     fi
 
 # Install FZF binary from GitHub releases
-setup-fzf:
+install-fzf:
     #!/usr/bin/env bash
     set -euo pipefail
 
