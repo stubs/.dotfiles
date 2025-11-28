@@ -172,7 +172,7 @@ install-neovim:
     if [ -d "/usr/local/nvim" ]; then
         echo "✅ Neovim already installed"
     else
-        NVIM_VERSION="0.10.3"
+        NVIM_VERSION="0.11.5"
         ARCH_NAME="$(uname -m)"
 
         # Determine architecture-specific download URL
