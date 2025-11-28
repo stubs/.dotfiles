@@ -55,12 +55,6 @@ return require("packer").startup(function(use)
         lock = true
     }
     use {
-        "jose-elias-alvarez/null-ls.nvim",
-        commit = "0010ea927ab7c09ef0ce9bf28c2b573fc302f5a7",
-        lock = true,
-        requires = "nvim-lua/plenary.nvim"
-    }
-    use {
         "lewis6991/gitsigns.nvim",
         commit = "5f808b5e4fef30bd8aca1b803b4e555da07fc412",
         lock = true,
