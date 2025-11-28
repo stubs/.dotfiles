@@ -95,3 +95,8 @@ keymap('n', '<leader>t', ':Twilight<CR>', opts)
 
 -- git-worktree
 -- keymap('n', '<leader>w', ':lua require("telescope").extensions.git_worktree.git_worktree()<CR>', opts)
+
+-- lsp actions
+keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)

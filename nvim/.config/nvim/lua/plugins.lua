@@ -85,7 +85,7 @@ return require("packer").startup(function(use)
     }
     use {
         "neovim/nvim-lspconfig",
-        commit = "9f2c279cf9abe584f03bfeb37c6658d68e3ff49d",
+        tag = "v2.5.0",
         lock = true
     }
     use {
