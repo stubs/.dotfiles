@@ -59,11 +59,11 @@ install-brewfile:
     select yn in "$HOME/home_brewfile" "$HOME/work_brewfile"; do
         case $yn in
             "$HOME/home_brewfile" )
-                brew bundle --file="$HOME/home_brewfile" --no-lock
+                brew bundle --file="$HOME/home_brewfile"
                 break
                 ;;
             "$HOME/work_brewfile" )
-                brew bundle --file="$HOME/work_brewfile" --no-lock
+                brew bundle --file="$HOME/work_brewfile"
                 break
                 ;;
         esac
@@ -86,7 +86,7 @@ install-brewfile-home:
     fi
 
     echo "📦 Installing home brewfile..."
-    brew bundle --file="$HOME/home_brewfile" --no-lock
+    brew bundle --file="$HOME/home_brewfile"
     brew cleanup
     echo "✅ Home brewfile installed"
 
@@ -103,7 +103,7 @@ install-brewfile-work:
     fi
 
     echo "📦 Installing work brewfile..."
-    brew bundle --file="$HOME/work_brewfile" --no-lock
+    brew bundle --file="$HOME/work_brewfile"
     brew cleanup
     echo "✅ Work brewfile installed"
 
