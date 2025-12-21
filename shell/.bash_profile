@@ -25,6 +25,9 @@ done
 # starship prompt
 eval "$(starship init bash)"
 
+# zoxide init
+eval "$(zoxide init bash)"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "/Users/$USER/google-cloud-sdk/path.bash.inc" ]; then . "/Users/$USER/google-cloud-sdk/path.bash.inc"; fi
 
