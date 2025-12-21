@@ -12,7 +12,6 @@ setup: install-brew \
        install-fonts \
        install-ghostty \
        install-neovim \
-       install-npm-lsp-servers \
        install-crush \
        install-fzf \
        deploy-dotfiles \
@@ -213,6 +212,7 @@ install-neovim:
     fi
 
 # Install NPM language servers for Neovim
+# TODO: rm since nvim mason installs these now.
 install-npm-lsp-servers:
     #!/usr/bin/env bash
     set -euo pipefail
