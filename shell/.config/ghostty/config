@@ -1,6 +1,6 @@
 # Testing
 auto-update-channel = tip
-custom-shader = ./shaders/cursor_smear.glsl
+custom-shader = ./shaders/cursor_tail.glsl
 
 # Accepted
 shell-integration-features = no-cursor
