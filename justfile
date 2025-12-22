@@ -421,13 +421,12 @@ dry-run:
     @echo "4. 📥 Install Fira Code Nerd Font"
     @echo "5. 👻 Install Ghostty terminal"
     @echo "6. 📝 Install Neovim from binary"
-    @echo "7. 📦 Install NPM language servers for Neovim"
-    @echo "8. 🔗 Deploy dotfiles using stow"
+    @echo "7. 🔗 Deploy dotfiles using stow"
     @echo "   ⚠️  WARNING: Removes existing dotfiles before stowing!"
-    @echo "9. 🐚 Set Homebrew bash as default shell (requires sudo)"
-    @echo "10. 🔍 Install FZF binary"
-    @echo "11. 💖 Install Crush binary"
-    @echo "12. 🍎 Apply macOS system defaults"
+    @echo "8. 🐚 Set Homebrew bash as default shell (requires sudo)"
+    @echo "9. 🔍 Install FZF binary"
+    @echo "10. 💖 Install Crush binary"
+    @echo "11. 🍎 Apply macOS system defaults"
     @echo ""
     @echo "To run full setup: ./justfile setup"
     @echo "To run individual steps: ./justfile <command-name>"
@@ -447,11 +446,12 @@ clean:
     fi
 
     echo "🧹 Cleaning up..."
-    rm -f FiraCode.zip
-    rm -f /tmp/Ghostty.dmg
-    rm -f /tmp/fzf.tar.gz
-    rm -f /tmp/nvim-macos.tar.gz
-    brew cleanup
+    rm -f FiraCode.zip || true
+    rm -f /tmp/Ghostty.dmg || true
+    rm -f /tmp/fzf.tar.gz || true
+    rm -f /tmp/nvim-macos.tar.gz || true
+    rm -f /tmp/crush.tar.gz || true
+    brew cleanup || true
     echo "✅ Cleanup complete"
 
 # Unstow all dotfiles (reverse deployment)
