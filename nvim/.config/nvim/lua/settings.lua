@@ -44,7 +44,16 @@ vim.opt.wildignore:append {"*/tmp/*","*.swp"}  -- Linux/MacOSX
 -- LSP diagnostic config
 vim.diagnostic.config({
   virtual_text = false,
+  virtual_lines = false,
   float = { source = true }
+})
+vim.api.nvim_create_augroup("FloatDiagnostic", { clear = true })
+vim.api.nvim_create_autocmd("CursorHold", {
+    pattern = "*",
+    callback = function()
+        vim.diagnostic.open_float(nil, { focusable = false })
+    end,
+    group = "FloatDiagnostic",
 })
 
 local function lspSymbol(name, icon)

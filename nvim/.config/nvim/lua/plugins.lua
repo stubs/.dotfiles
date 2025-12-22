@@ -51,14 +51,8 @@ return require("packer").startup(function(use)
     use {
         "hrsh7th/nvim-cmp",
         requires = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lsp", "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets"},
-        commit = "98e8b9d593a5547c126a39212d6f5e954a2d85dd",
+        tag = "v0.0.2",
         lock = true
-    }
-    use {
-        "jose-elias-alvarez/null-ls.nvim",
-        commit = "0010ea927ab7c09ef0ce9bf28c2b573fc302f5a7",
-        lock = true,
-        requires = "nvim-lua/plenary.nvim"
     }
     use {
         "lewis6991/gitsigns.nvim",
@@ -91,7 +85,7 @@ return require("packer").startup(function(use)
     }
     use {
         "neovim/nvim-lspconfig",
-        commit = "9f2c279cf9abe584f03bfeb37c6658d68e3ff49d",
+        tag = "v2.5.0",
         lock = true
     }
     use {
@@ -236,7 +230,6 @@ return require("packer").startup(function(use)
         commit = "e09a8dbffa139ad60d5b47998fcc8669ead1ebf4",
         lock = true,
     }
-    use {"ThePrimeagen/git-worktree.nvim", disable = true}
     use {"polarmutex/git-worktree.nvim", disable = true, tag = "2.0.0"}
     use {"sphamba/smear-cursor.nvim", commit = "8820b313e49a018c7d56fc309c51363c0e9ae653", lock = true}
 

@@ -11,10 +11,18 @@ vim.api.nvim_create_autocmd({"BufWritePost"},
         desc = "Auto ufmt Python files prior to saving",
         callback = function()
             local file_name = vim.api.nvim_buf_get_name(0) -- Get file name of file in current buffer
-            -- TODO: ufmt all py files if .venv/ in repo root has it or ~/.virtualenvs/
             vim.cmd(':silent !"$(git rev-parse --show-toplevel)"/.venv/bin/ufmt format ' .. file_name)
             vim.cmd(':silent !~/.virtualenvs/"$(basename $(git rev-parse --show-toplevel))"-dev/bin/ufmt format ' .. file_name)
-            -- vim.cmd(":silent !~/.virtualenvs/conductor-dev/bin/ufmt -q format " .. file_name)
+        end,
+        group = autocmd_group,
+    })
+
+vim.api.nvim_create_autocmd({"BufWritePost"},
+    {
+        pattern = {"*.rs"},
+        desc = "cargo fmt rust files prior to saving",
+        callback = function()
+            vim.cmd(":silent !cargo fmt")
         end,
         group = autocmd_group,
     })
@@ -58,6 +66,34 @@ M.delta_git_status = function(opts)
     opts.previewer = delta
     -- opts.layout_strategy = 'vertical'
     builtin.git_status(opts)
+end
+
+M.toggle_virtual_text = function()
+    local group = "FloatDiagnostic"
+    local current_config = vim.diagnostic.config()
+    local new_virtual_text_value = not (current_config.virtual_lines or false)
+
+    vim.diagnostic.config({
+        virtual_lines = new_virtual_text_value,
+        float = { source = true },
+    })
+
+    if new_virtual_text_value then
+        -- remove the autocmd
+        vim.api.nvim_clear_autocmds({ group = group })
+        print("virtual_text enabled, float disabled")
+    else
+        -- add the autocmd
+        vim.api.nvim_create_augroup(group, { clear = true })
+        vim.api.nvim_create_autocmd("CursorHold", {
+            pattern = "*",
+            callback = function()
+                vim.diagnostic.open_float(nil, { focusable = false })
+            end,
+            group = group,
+        })
+        print("virtual_text disabled, float enabled")
+    end
 end
 
 return M

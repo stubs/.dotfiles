@@ -13,8 +13,8 @@ git clone <your-repo-url> ~/.dotfiles
 # 2. Navigate to the directory
 cd ~/.dotfiles
 
-# 3. Run the bootstrap script
-./bootstrap.sh
+# 3. Run the complete setup (this does everything!)
+./setup.sh
 
 # 4. Restart your terminal (or restart your Mac)
 
@@ -36,7 +36,10 @@ That's it! Your development environment is ready.
 - [Prerequisites](#prerequisites)
 - [What's Included](#whats-included)
 - [Installation](#installation)
-- [What the Bootstrap Script Does](#what-the-bootstrap-script-does)
+  - [Quick Setup (Recommended)](#quick-setup-recommended)
+  - [Manual Setup (Individual Steps)](#manual-setup-individual-steps)
+- [What the Setup Does](#what-the-setup-does)
+- [Available Commands](#available-commands)
 - [Post-Installation](#post-installation)
 - [Customization](#customization)
 - [Troubleshooting](#troubleshooting)
@@ -58,11 +61,12 @@ That's it! Your development environment is ready.
 This dotfiles repository includes:
 
 - **Shell Configuration**: Custom bash setup with aliases, functions, and enhanced CLI tools
-- **Neovim**: Fully configured modern text editor with LSP, debugging, and plugins
+- **Neovim**: Fully configured modern text editor with LSP, debugging, and plugins (installed from binary)
+- **Ghostty Terminal**: Modern GPU-accelerated terminal emulator
+- **FZF**: Fast fuzzy finder for command-line (installed from binary)
 - **Starship Prompt**: Fast, customizable shell prompt
 - **Git Tools**: Custom git scripts and configurations
 - **Homebrew Packages**: Curated lists of CLI tools, applications, and utilities
-- **Terminal Themes**: Pre-configured Alacritty themes (Gruvbox dark/light)
 - **macOS Defaults**: Sensible macOS system preferences
 - **GNU Tools**: Modern versions of core utilities (grep, sed, ls, etc.)
 
@@ -70,41 +74,94 @@ This dotfiles repository includes:
 
 ## 🔧 Installation
 
-### Step 1: Clone the Repository
+### Clone the Repository
 
 From your home directory, clone this repository:
 
 ```bash
 cd ~
 git clone <your-repo-url> ~/.dotfiles
+cd ~/.dotfiles
 ```
 
 **Note**: The repository MUST be cloned to `~/.dotfiles` for the stow symlinks to work correctly.
 
-### Step 2: Run Bootstrap
+---
 
-Navigate to the dotfiles directory and run the bootstrap script:
+### Quick Setup (Recommended)
+
+**The easiest way to set up everything:**
 
 ```bash
-cd ~/.dotfiles
-chmod +x bootstrap.sh  # Make executable if needed
-./bootstrap.sh
+./setup.sh
 ```
 
-During installation, you'll be prompted to choose between:
-- **home_brewfile**: Personal machine setup
-- **work_brewfile**: Work machine setup
+**What this does:**
 
-Select the appropriate option using the number keys (1 or 2).
+1. ✅ Installs `uv` (required for the justfile to work)
+2. ✅ Runs `./justfile setup` which installs everything:
+   - Homebrew
+   - Core tools (stow, coreutils, grep, gnu-sed)
+   - Fonts (Fira Code Nerd Font)
+   - Ghostty terminal
+   - Neovim
+   - NPM language servers
+   - Deploys dotfiles with stow
+   - Sets up shell
+   - Installs FZF
+   - Applies macOS defaults
 
-### Step 3: Restart
+This is a single command that handles the entire setup from start to finish!
 
-After the script completes:
+---
+
+### Manual Setup (Individual Steps)
+
+If you prefer to run steps individually or need to resume from a specific point:
+
+```bash
+# First, install uv (required for justfile to work)
+curl -LsSf https://astral.sh/uv/0.9.4/install.sh | env UV_NO_MODIFY_PATH=1 sh
+sudo ln -sf "$HOME/.local/bin/uv" /usr/local/bin/uv
+
+# See all available commands
+./justfile --list
+
+# See what the setup will do (dry run)
+./justfile dry-run
+
+# Run full setup (all steps)
+./justfile setup
+
+# Or run individual steps as needed
+./justfile install-brew
+./justfile install-fonts
+./justfile install-ghostty
+./justfile install-neovim
+./justfile deploy-dotfiles
+./justfile install-brewfile-home  # Non-interactive home setup
+./justfile install-brewfile-work  # Non-interactive work setup
+```
+
+**Benefits of manual setup:**
+
+- ✅ Run individual steps independently
+- ✅ Resume from where you left off if interrupted
+- ✅ Clear documentation of what each step does
+- ✅ Skip steps you don't need
+- ✅ Non-interactive options available
+
+---
+
+### Restart Your System
+
+After the setup completes:
+
 1. Close your terminal completely
 2. Optionally restart your Mac for all changes to take effect
 3. Open a new terminal (it should now be using bash instead of zsh)
 
-### Step 4: Neovim Plugin Setup
+### Neovim Plugin Setup
 
 The Neovim plugins require a special initialization process:
 
@@ -128,64 +185,155 @@ nvim
 
 ---
 
-## 🔍 What the Bootstrap Script Does
+## 🔍 What the Setup Does
 
-The `bootstrap.sh` script automates the entire setup process. Here's a detailed breakdown:
+The `setup.sh` script automates the entire setup process by first installing `uv`, then running `./justfile setup` to complete all remaining steps. Here's a detailed breakdown:
+
+### 0. **UV Installation (setup.sh)**
+
+**The setup.sh script starts by installing uv:**
+
+- Installs `uv` (Python package manager) to your system
+- `uv` is required because the justfile uses `uvx` in its shebang
+- Symlinks `uv` to `/usr/local/bin/uv` for global access
+- Enables running the justfile directly with `./justfile` (no need to install `just` separately)
+- Then automatically runs `./justfile setup` to complete the installation
 
 ### 1. **Nerd Fonts Installation**
-   - Checks if FiraCode Nerd Font is already installed
-   - Downloads FiraCode Nerd Font v2.1.0 from GitHub
-   - Installs fonts to `~/Library/Fonts/`
-   - Cleans up temporary files
+
+- Checks if FiraCode Nerd Font is already installed
+- Downloads FiraCode Nerd Font v2.1.0 from GitHub
+- Installs fonts to `~/Library/Fonts/`
+- Cleans up temporary files
 
 ### 2. **Homebrew Installation**
-   - Checks if Homebrew is installed
-   - Installs Homebrew if not present
-   - Configures appropriate paths for Intel (x86_64) or Apple Silicon (arm64) Macs
+
+- Checks if Homebrew is installed
+- Installs Homebrew if not present
+- Configures appropriate paths for Intel (x86_64) or Apple Silicon (arm64) Macs
 
 ### 3. **Essential GNU Tools**
-   Installs critical utilities needed for the bootstrap process:
-   - `stow` - Symlink manager for dotfiles
-   - `coreutils` - GNU core utilities (better ls, cp, etc.)
-   - `grep` - GNU grep (more features than BSD grep)
-   - `gnu-sed` - GNU sed (different syntax than BSD sed)
 
-### 4. **Stow Deployment**
-   - Scans each directory in the dotfiles repo
-   - Removes existing files/directories that would conflict
-   - Uses GNU Stow to create symlinks from ~/.dotfiles/* to ~/
-   - Files go directly to home directory
-   - Subdirectories (like `.config`) are preserved in structure
+   Installs critical utilities needed for the bootstrap process:
+
+- `stow` - Symlink manager for dotfiles
+- `coreutils` - GNU core utilities (better ls, cp, etc.)
+- `grep` - GNU grep (more features than BSD grep)
+- `gnu-sed` - GNU sed (different syntax than BSD sed)
+
+### 4. **Stow Deployment** ⚠️
+
+- Scans each directory in the dotfiles repo
+- **WARNING**: Removes existing files/directories that would conflict with stow
+- Uses GNU Stow to create symlinks from ~/.dotfiles/* to ~/
+- Files go directly to home directory
+- Subdirectories (like `.config`) are preserved in structure
+- **This step is destructive** - backup your existing dotfiles first!
 
 ### 5. **Alacritty Themes**
-   - Creates `~/.config/alacritty/themes/` directory
-   - Downloads Gruvbox dark and light themes
+
+- Creates `~/.config/alacritty/themes/` directory
+- Downloads Gruvbox dark and light themes
 
 ### 6. **Homebrew Bundle**
-   - Prompts you to select home or work Brewfile
-   - Installs all packages, apps, and tools defined in the selected Brewfile
-   - This includes: CLI tools, GUI applications, fonts, VS Code extensions, etc.
-   - Runs `brew cleanup` to remove old versions
+
+- Prompts you to select home or work Brewfile
+- Installs all packages, apps, and tools defined in the selected Brewfile
+- This includes: CLI tools, GUI applications, fonts, VS Code extensions, etc.
+- Runs `brew cleanup` to remove old versions
 
 ### 7. **Shell Change**
-   - Adds Homebrew's bash to `/etc/shells` (requires sudo)
-   - Changes your default shell from zsh to bash
-   - Uses the modern Homebrew-installed bash (not the old macOS system bash)
+
+- Adds Homebrew's bash to `/etc/shells` (requires sudo)
+- Changes your default shell from zsh to bash
+- Uses the modern Homebrew-installed bash (not the old macOS system bash)
 
 ### 8. **NPM Language Servers**
-   - Parses your Neovim LSP config
-   - Extracts npm-based language server requirements
-   - Installs them globally via npm
-   - Provides LSP support for TypeScript, JavaScript, etc.
 
-### 9. **FZF Setup**
-   - Installs FZF key bindings for command history (Ctrl+R)
-   - Enables fuzzy completion in your shell
+- Parses your Neovim LSP config
+- Extracts npm-based language server requirements
+- Installs them globally via npm
+- Provides LSP support for TypeScript, JavaScript, etc.
 
-### 10. **macOS Defaults**
-   - Runs `osxdefaults.sh` script
-   - Sets sensible macOS system preferences
-   - Customizes Finder, Dock, and other system behaviors
+### 9. **Ghostty Terminal**
+
+- Downloads Ghostty v1.2.2 from official releases
+- Installs to `/Applications`
+- Creates symlink to `/usr/local/bin/ghostty` for CLI access
+
+### 10. **Neovim Installation**
+
+- Downloads Neovim v0.10.3 from GitHub releases
+- Detects your Mac architecture (Apple Silicon or Intel)
+- Installs to `/usr/local/nvim`
+- Creates symlink to `/usr/local/bin/nvim`
+- Removes quarantine attributes to avoid "unknown developer" warnings
+
+### 11. **FZF Installation**
+
+- Downloads FZF v0.66.0 binary from GitHub releases
+- Installs to `~/.local/bin/fzf`
+- Creates symlink to `/usr/local/bin/fzf`
+- Note: Shell keybindings need to be configured separately in your shell config
+
+### 12. **macOS Defaults**
+
+- Runs `osxdefaults.sh` script
+- Sets sensible macOS system preferences
+- Customizes Finder, Dock, and other system behaviors
+
+---
+
+## 🎯 Available Commands
+
+The `justfile` provides these individual commands:
+
+```bash
+./justfile                         # Show all available commands
+./justfile --list                  # Same as above
+./justfile dry-run                 # See what the setup will do without running it
+
+# Setup Commands
+./justfile setup                   # Run complete setup (all steps)
+./justfile install-brew            # Install Homebrew only
+./justfile install-brewfile        # Install brewfile (interactive prompt)
+./justfile install-brewfile-home   # Install home brewfile (non-interactive)
+./justfile install-brewfile-work   # Install work brewfile (non-interactive)
+./justfile install-core-tools      # Install stow, coreutils, grep, gnu-sed
+./justfile install-fonts           # Install Fira Code Nerd Font
+./justfile install-ghostty         # Install Ghostty terminal
+./justfile install-neovim          # Install Neovim from binary
+./justfile install-npm-lsp-servers # Install NPM language servers for Neovim
+./justfile deploy-dotfiles         # Deploy dotfiles with stow (⚠️ removes existing files)
+./justfile setup-shell             # Set Homebrew bash as default shell
+./justfile setup-fzf               # Install FZF binary
+./justfile macos-defaults          # Apply macOS system defaults
+
+# Maintenance Commands
+./justfile update-brew             # Update all Homebrew packages
+./justfile check-brewfile          # Check brewfile status without installing
+./justfile clean                   # Clean up downloaded files and brew cache
+./justfile unstow-dotfiles         # Remove all stow symlinks (reverse deployment)
+```
+
+**Common Workflows:**
+
+```bash
+# New machine setup (one command does everything!)
+./setup.sh
+
+# Update dotfiles on existing machine
+./justfile deploy-dotfiles
+
+# Add new packages to brewfile, then install them
+./justfile install-brewfile-home
+
+# Update all packages
+./justfile update-brew
+
+# Remove dotfiles before switching to different config
+./justfile unstow-dotfiles
+```
 
 ---
 
@@ -277,26 +425,36 @@ stow new-tool
 
 ## 🐛 Troubleshooting
 
-### Bootstrap Script Fails
+### Setup Script Fails
 
 **Problem**: Script exits with errors
 
 **Solutions**:
+
 - Ensure you have an internet connection
 - Check you have enough disk space
 - Make sure you have admin privileges (sudo access)
-- Try running individual sections manually
+- Try running individual commands to isolate the issue:
+
+  ```bash
+  ./justfile install-brew
+  ./justfile install-core-tools
+  # etc...
+  ```
+
+- If `setup.sh` fails during the uv installation, you may need to manually install `uv` first
 
 ### Stow Conflicts
 
 **Problem**: "WARNING: in stow directory, stow conflicts with existing target"
 
 **Solution**:
+
 ```bash
 # Manually remove the conflicting file
 rm ~/.conflicting-file
-# Run bootstrap again
-./bootstrap.sh
+# Run deploy again
+./justfile deploy-dotfiles
 ```
 
 ### Homebrew Permission Issues
@@ -304,6 +462,7 @@ rm ~/.conflicting-file
 **Problem**: Permission denied errors during `brew install`
 
 **Solutions**:
+
 ```bash
 # Fix Homebrew permissions
 sudo chown -R $(whoami) $(brew --prefix)/*
@@ -314,13 +473,16 @@ sudo chown -R $(whoami) $(brew --prefix)/*
 **Problem**: Neovim opens but plugins don't work
 
 **Solutions**:
+
 1. Make sure you followed the Neovim plugin setup steps exactly
 2. Try manually installing the plugin manager:
+
    ```bash
    # For lazy.nvim (most common)
    git clone https://github.com/folke/lazy.nvim.git \
      ~/.local/share/nvim/lazy/lazy.nvim
    ```
+
 3. Open Neovim and check for errors: `:checkhealth`
 4. Reinstall plugins: `:Lazy sync`
 
@@ -329,10 +491,13 @@ sudo chown -R $(whoami) $(brew --prefix)/*
 **Problem**: Terminal still opens with zsh after restart
 
 **Solutions**:
+
 1. Manually change shell:
+
    ```bash
    chsh -s $(brew --prefix)/bin/bash
    ```
+
 2. Restart terminal completely (not just new tab)
 3. Check System Preferences → Users & Groups → Advanced Options
 
@@ -341,6 +506,7 @@ sudo chown -R $(whoami) $(brew --prefix)/*
 **Problem**: Neovim LSP features not working
 
 **Solutions**:
+
 ```bash
 # Reinstall npm language servers
 cd ~/.dotfiles
@@ -356,28 +522,30 @@ grep -E "npm" nvim/.config/nvim/lua/config/nvim-lspconfig.lua | \
 
 ## 📁 Directory Structure
 
-```
+```text
 ~/.dotfiles/
-├── bootstrap.sh              # Main installation script
-├── osxdefaults.sh           # macOS system preferences
-├── README.md                # This file
-├── brewfiles/               # Homebrew package definitions
-│   ├── home_brewfile       # Personal machine packages
-│   └── work_brewfile       # Work machine packages
-├── git/                     # Git configurations and scripts
-│   └── better-branch.sh    # Custom git utilities
-├── nvim/                    # Neovim configuration
+├── setup.sh                 # Complete setup script (run this!)
+├── justfile                 # Modern task runner with all setup commands
+├── osxdefaults.sh          # macOS system preferences
+├── README.md               # This file
+├── bootstrap.sh            # [DEPRECATED] Legacy installation script
+├── brewfiles/              # Homebrew package definitions
+│   ├── home_brewfile      # Personal machine packages
+│   └── work_brewfile      # Work machine packages
+├── git/                    # Git configurations and scripts
+│   └── better-branch.sh   # Custom git utilities
+├── nvim/                   # Neovim configuration
 │   └── .config/nvim/
-│       ├── init.lua        # Main Neovim config
-│       └── lua/            # Lua modules and plugins
-├── scripts/                 # Custom utility scripts
-├── sesh/                    # Session management configs
-├── shell/                   # Shell configurations
-│   ├── .aliases           # Command aliases
-│   ├── .bashrc            # Bash configuration
-│   └── .config/           # Shell-related configs
-├── starship/                # Starship prompt config
-└── vim/                     # Vim configuration (if used)
+│       ├── init.lua       # Main Neovim config
+│       └── lua/           # Lua modules and plugins
+├── scripts/                # Custom utility scripts
+├── sesh/                   # Session management configs
+├── shell/                  # Shell configurations
+│   ├── .aliases          # Command aliases
+│   ├── .bashrc           # Bash configuration
+│   └── .config/          # Shell-related configs
+├── starship/               # Starship prompt config
+└── vim/                    # Vim configuration (if used)
 ```
 
 ---
@@ -385,6 +553,7 @@ grep -E "npm" nvim/.config/nvim/lua/config/nvim-lspconfig.lua | \
 ## 🤝 Contributing
 
 This is a personal dotfiles repository, but feel free to:
+
 - Fork it and adapt it to your needs
 - Submit issues if you find bugs
 - Suggest improvements via pull requests
@@ -393,11 +562,14 @@ This is a personal dotfiles repository, but feel free to:
 
 ## 📝 Notes
 
-- **Backup First**: If you have existing dotfiles, back them up before running bootstrap
+- **One Command Setup**: Simply run `./setup.sh` for complete installation - it handles everything including uv installation and running the justfile
+- **No Just Installation Needed**: The justfile uses `uvx` in its shebang to automatically fetch and run `just`, so you don't need to install it separately
+- **Backup First**: If you have existing dotfiles, back them up before running setup - the deploy step removes conflicting files!
 - **Review Brewfiles**: Check the Brewfile contents before installation - they install a lot of software
 - **Internet Required**: Initial setup downloads several GB of tools and applications
 - **Time Required**: First-time setup takes 30-60 minutes depending on your internet speed
-- **Shell Change**: The script changes your shell to bash - if you prefer zsh, skip that step
+- **Shell Change**: The setup changes your shell to bash - if you prefer zsh, skip that step or use individual justfile commands instead of setup.sh
+- **Bootstrap.sh Deprecated**: The original `bootstrap.sh` script is deprecated in favor of the streamlined `setup.sh` workflow
 
 ---
 

@@ -6,6 +6,8 @@ require("mason-lspconfig").setup({
         "lua_ls",
         "marksman",
         "pyright",
+        "rust_analyzer",
+        "terraformls",
         "yamlls",
     },
 })

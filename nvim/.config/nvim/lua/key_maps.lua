@@ -1,7 +1,6 @@
 -- autocmd to source when this file is written to.
 vim.cmd([[
     autocmd BufWritePost key_maps.lua source <afile> | source $MYVIMRC
-    autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
 
 local opts = { noremap=true, silent=true }
@@ -62,6 +61,7 @@ keymap('n', 'gD', ':lua require("goto-preview").close_all_win()<CR>', opts)
 keymap('n', '<Leader>[', '<cmd>lua vim.diagnostic.goto_prev({ float = true })<CR>', opts)
 keymap('n', '<Leader>]', '<cmd>lua vim.diagnostic.goto_next({ float = true })<CR>', opts)
 keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+keymap('n', '<Leader>dt', '<cmd>lua require("functions").toggle_virtual_text()<CR>', opts)
 --keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 --keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 --keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
@@ -95,3 +95,8 @@ keymap('n', '<leader>t', ':Twilight<CR>', opts)
 
 -- git-worktree
 -- keymap('n', '<leader>w', ':lua require("telescope").extensions.git_worktree.git_worktree()<CR>', opts)
+
+-- lsp actions
+keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
