@@ -211,32 +211,6 @@ install-neovim:
         echo "✅ Neovim installed"
     fi
 
-# Install NPM language servers for Neovim
-# TODO: rm since nvim mason installs these now.
-install-npm-lsp-servers:
-    #!/usr/bin/env bash
-    set -euo pipefail
-
-    # Setup brew command
-    ARCH_NAME="$(uname -m)"
-    if [ "${ARCH_NAME}" = "x86_64" ]; then
-        eval $(/usr/local/bin/brew shellenv)
-    else
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
-
-    if [ ! -f nvim/.config/nvim/lua/config/nvim-lspconfig.lua ]; then
-        echo "⚠️  nvim-lspconfig.lua not found, skipping NPM language servers"
-        exit 0
-    fi
-
-    echo "📦 Installing NPM language servers for Neovim..."
-    "$(brew --prefix)"/opt/grep/libexec/gnubin/grep -E "npm" nvim/.config/nvim/lua/config/nvim-lspconfig.lua \
-        | "$(brew --prefix)"/opt/gnu-sed/libexec/gnubin/sed 's/-- npm i -g //g' \
-        | xargs "$(brew --prefix)"/bin/npm i -g
-
-    echo "✅ NPM language servers installed"
-
 # Deploy dotfiles using GNU stow
 # WARNING: This will remove existing files/dirs before stowing!
 deploy-dotfiles:
