@@ -334,7 +334,7 @@ install-crush:
     set -euo pipefail
 
     ARCH_NAME="$(uname -m)"
-    CRUSH_VERSION="0.16.1"
+    CRUSH_VERSION="0.32.1"
 
     # Determine architecture-specific download URL
     if [ "${ARCH_NAME}" = "x86_64" ]; then
@@ -370,6 +370,64 @@ install-crush:
 
     echo "✅ Crush installed to $HOME/.local/bin/crush"
     echo "✅ Symlinked to /usr/local/bin/crush"
+
+# Download and install Cursor IDE
+# TODO: Implement this recipe. Should download Cursor for the correct
+# architecture, install it to /Applications, and symlink the `cursor`
+# CLI tool to /usr/local/bin.
+install-cursor:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    if [ -d "/Applications/Cursor.app" ]; then
+        echo "✅ Cursor already installed"
+    else
+        echo "🖱️ Downloading and installing Cursor..."
+
+        # Determine architecture
+        ARCH_NAME="$(uname -m)"
+        if [ "${ARCH_NAME}" = "x86_64" ]; then
+            CURSOR_URL="https://api2.cursor.sh/updates/download/golden/darwin-x64/cursor/2.3"
+        else
+            CURSOR_URL="https://api2.cursor.sh/updates/download/golden/darwin-arm64/cursor/2.3"
+        fi
+
+        # Download the dmg
+        echo "  Downloading Cursor.dmg..."
+        curl -L "$CURSOR_URL" -o /tmp/Cursor.dmg
+
+        # Mount the DMG
+        echo "  Mounting Cursor.dmg..."
+        hdiutil attach /tmp/Cursor.dmg -quiet
+
+        # Find the app bundle and mount point
+        APP_PATH=$(find /Volumes -name "Cursor.app" -maxdepth 3 -type d | head -n 1)
+        if [ -z "$APP_PATH" ]; then
+            echo "  Error: Could not find Cursor.app in the mounted DMG."
+            echo "  Please check /Volumes and unmount any related images manually."
+            exit 1
+        fi
+        MOUNT_POINT=$(dirname "$APP_PATH")
+
+        # Copy the app to /Applications
+        echo "  Copying Cursor.app to /Applications..."
+        cp -r "$APP_PATH" /Applications/
+
+        # Unmount the DMG
+        echo "  Unmounting Cursor.dmg..."
+        hdiutil detach "$MOUNT_POINT" -quiet
+
+        # Create symlink to /usr/local/bin (requires sudo)
+        if [ ! -L /usr/local/bin/cursor ]; then
+            echo "  Creating symlink to /usr/local/bin/cursor (requires sudo)..."
+            sudo ln -sf "/Applications/Cursor.app/Contents/Resources/app/bin/cursor" /usr/local/bin/cursor
+        fi
+
+        # Clean up
+        rm /tmp/Cursor.dmg
+
+        echo "✅ Cursor installed"
+    fi
 
 # Apply macOS system defaults
 macos-defaults:
