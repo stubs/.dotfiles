@@ -371,6 +371,8 @@ install-crush:
     echo "✅ Crush installed to $HOME/.local/bin/crush"
     echo "✅ Symlinked to /usr/local/bin/crush"
 
+CURSOR_VERSION := "2.3"
+
 # Download and install Cursor IDE
 # TODO: Implement this recipe. Should download Cursor for the correct
 # architecture, install it to /Applications, and symlink the `cursor`
@@ -382,14 +384,14 @@ install-cursor:
     if [ -d "/Applications/Cursor.app" ]; then
         echo "✅ Cursor already installed"
     else
-        echo "🖱️ Downloading and installing Cursor..."
+        echo "🖱️ Downloading and installing Cursor {{CURSOR_VERSION}}..."
 
         # Determine architecture
         ARCH_NAME="$(uname -m)"
         if [ "${ARCH_NAME}" = "x86_64" ]; then
-            CURSOR_URL="https://api2.cursor.sh/updates/download/golden/darwin-x64/cursor/2.3"
+            CURSOR_URL="https://api2.cursor.sh/updates/download/golden/darwin-x64/cursor/{{CURSOR_VERSION}}"
         else
-            CURSOR_URL="https://api2.cursor.sh/updates/download/golden/darwin-arm64/cursor/2.3"
+            CURSOR_URL="https://api2.cursor.sh/updates/download/golden/darwin-arm64/cursor/{{CURSOR_VERSION}}"
         fi
 
         # Download the dmg
@@ -428,6 +430,11 @@ install-cursor:
 
         echo "✅ Cursor installed"
     fi
+
+    # Install Cursor CLI agent
+    echo "🤖 Installing Cursor CLI agent..."
+    curl https://cursor.com/install -fsS | bash
+    echo "✅ Cursor CLI agent installed"
 
 # Apply macOS system defaults
 macos-defaults:
