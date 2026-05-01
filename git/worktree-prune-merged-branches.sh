@@ -30,8 +30,12 @@ git worktree list --porcelain | awk '
   fi
 
   if git merge-base --is-ancestor "$br" "$main_branch"; then
+    if [[ -n "$(git -C "$wt" status --porcelain)" ]]; then
+      echo "⚠️  Dirty, skipping: $wt ($br merged but has uncommitted/untracked changes)"
+      continue
+    fi
     echo "🧹 Removing worktree: $wt (merged: $br)"
-    git worktree remove "$wt"
+    git worktree remove "$wt" || echo "❌ Failed to remove: $wt"
   else
     echo "Keeping: $wt ($br not merged)"
   fi
