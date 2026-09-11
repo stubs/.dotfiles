@@ -100,3 +100,9 @@ keymap('n', '<leader>t', ':Twilight<CR>', opts)
 keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+
+-- herdr-nvim
+keymap('n', '<leader>hc', '<CMD>Herdr comment<CR>', opts)
+keymap('n', '<leader>hl', '<CMD>Herdr list<CR>', opts)
+keymap('n', '<leader>hs', '<CMD>Herdr send<CR>', opts)
+keymap('n', '<leader>hS', '<CMD>Herdr submit<CR>', opts)
