@@ -46,9 +46,11 @@ if ! git -C "$MAIN_TREE" check-ignore -q "$dir_rel" 2>/dev/null; then
 fi
 
 # Create worktree (fallback if branch already exists)
+# Ensure parent dir exists (branch names with slashes need it, e.g. feature/foo)
+mkdir -p "$(dirname "$WORKTREE_PATH")"
 log "Creating worktree: $WORKTREE_PATH (branch: $NAME)"
-if ! git -C "$MAIN_TREE" worktree add "$WORKTREE_PATH" -b "$NAME" 2>&1 >&2; then
-  log "Branch '$NAME' may already exist, trying without -b"
+if ! git -C "$MAIN_TREE" worktree add "$WORKTREE_PATH" -b "$NAME" 2>/dev/null; then
+  log "Branch '$NAME' already exists, adding worktree without -b"
   git -C "$MAIN_TREE" worktree add "$WORKTREE_PATH" "$NAME" >&2
 fi
 
@@ -83,7 +85,9 @@ if [ -f "pyproject.toml" ]; then
 elif ls requirements*.txt 1>/dev/null 2>&1; then
   log "Python project detected (requirements.txt)"
   uv venv -p "$PY_VER" >&2
-  uv pip install -r requirements*.txt >&2
+  req_args=()
+  for f in requirements*.txt; do req_args+=(-r "$f"); done
+  uv pip install "${req_args[@]}" >&2
 elif [ -f "package.json" ]; then
   log "Node.js project detected"
   npm install >&2
