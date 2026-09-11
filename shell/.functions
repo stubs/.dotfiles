@@ -69,12 +69,50 @@ rfv() (
       --query "$*"
 )
 
-# herdr worktree from an existing remote branch: hwt feature/some-branch
-hwt() {
-  if [[ -z "$1" ]]; then
-    echo "usage: hwt <remote-branch-name>" >&2
-    return 1
-  fi
-  git fetch origin "$1" --quiet || return 1
-  herdr worktree create --cwd "$PWD" --branch "$1" --base "origin/$1" --focus
+# herdr worktree from an existing remote branch: hwc feature/some-branch
+hwc() {
+    if ! command -v herdr &> /dev/null; then
+        echo "hwc: herdr not installed" >&2
+        return 1
+    fi
+    if [[ -z "$1" ]]; then
+        echo "usage: hwc <remote-branch-name>" >&2
+        return 1
+    fi
+    local repo_root
+    repo_root="$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")" || return 1
+    git fetch origin "$1" --quiet || return 1
+    herdr worktree create --cwd "$repo_root" --branch "$1" --base "origin/$1" \
+        --path "$repo_root/.worktrees/$1" --focus
+}
+
+# herdr worktree picker — fzf-select an existing worktree and open it: hwl
+hwl() {
+    if ! command -v herdr &> /dev/null; then
+        echo "hwl: herdr not installed" >&2
+        return 1
+    fi
+    for dep in fzf jq; do
+        if ! command -v "$dep" &> /dev/null; then
+            echo "hwl: $dep is required. Brew install it." >&2
+            return 1
+        fi
+    done
+
+    local listing repo_root sel
+    listing=$(herdr worktree list --cwd "$PWD") || return 1
+    repo_root=$(jq -r '.result.source.repo_root' <<< "$listing")
+    [ -n "$repo_root" ] && [ "$repo_root" != "null" ] || {
+        echo "hwl: could not resolve repo root" >&2
+        return 1
+    }
+
+    sel=$(jq -r '.result.worktrees[]
+            | [(if .open_workspace_id then "●" else "○" end), .branch, .path]
+            | @tsv' <<< "$listing" \
+        | column -t -s $'\t' \
+        | fzf --no-multi --highlight-line --header '● open   ○ closed')
+    [ -n "$sel" ] || return 0
+
+    herdr worktree open --cwd "$repo_root" --path "$(awk '{print $NF}' <<< "$sel")" --focus
 }
