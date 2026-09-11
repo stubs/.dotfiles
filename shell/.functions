@@ -68,3 +68,13 @@ rfv() (
       --preview-window '~4,+{2}+4/3,<80(up)' \
       --query "$*"
 )
+
+# herdr worktree from an existing remote branch: hwt feature/some-branch
+hwt() {
+  if [[ -z "$1" ]]; then
+    echo "usage: hwt <remote-branch-name>" >&2
+    return 1
+  fi
+  git fetch origin "$1" --quiet || return 1
+  herdr worktree create --cwd "$PWD" --branch "$1" --base "origin/$1" --focus
+}
