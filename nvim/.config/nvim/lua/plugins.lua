@@ -232,6 +232,7 @@ return require("packer").startup(function(use)
     }
     use {"polarmutex/git-worktree.nvim", disable = true, tag = "2.0.0"}
     use {"sphamba/smear-cursor.nvim", commit = "8820b313e49a018c7d56fc309c51363c0e9ae653", lock = true}
+    use {"ChmaraX/herdr-nvim" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

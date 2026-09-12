@@ -46,6 +46,7 @@
     wl = worktree list
     wc = !~/.dotfiles/git/worktree-create.sh
     wp = !~/.dotfiles/git/worktree-prune-merged-branches.sh
+    wr = !~/.dotfiles/git/worktree-review.sh
 
 [commit]
     template = ~/.dotfiles/git/.gitmessage

@@ -1,0 +1,11 @@
+id = "aarong.worktree-bootstrap"
+name = "Worktree Bootstrap"
+version = "0.1.0"
+min_herdr_version = "0.8.0"
+description = "Bootstraps a per-worktree Python dev env on worktree creation."
+platforms = ["macos", "linux"]
+
+[[events]]
+on = "worktree.created"
+platforms = ["macos", "linux"]
+command = ["bash", "bootstrap.sh"]

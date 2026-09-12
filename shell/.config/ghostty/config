@@ -1,5 +1,5 @@
 # Testing
-auto-update-channel = tip
+auto-update-channel = stable
 custom-shader = ./shaders/cursor_tail.glsl
 
 # Accepted
@@ -8,7 +8,7 @@ cursor-style = block
 cursor-invert-fg-bg = true
 
 font-family = "Fira Code Regular Nerd Font Complete Mono"
-theme = dark:Gruvbox Dark,light:Gruvbox Light
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 
 title = " "
 macos-titlebar-style = hidden
@@ -17,3 +17,4 @@ copy-on-select = true
 
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 quick-terminal-position = bottom
+macos-option-as-alt = true
