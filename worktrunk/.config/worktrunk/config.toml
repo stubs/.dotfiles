@@ -1,0 +1,42 @@
+# Worktrunk user config. Stowed to ~/.config/worktrunk/config.toml.
+# Replaces git/worktree-{create,review,prune-merged-branches}.sh.
+
+worktree-path = "{{ repo_path }}/.worktrees/{{ branch | sanitize }}"
+
+# Pipeline (each step waits for the previous one):
+# gitignore -> copy -> venv -> py_install
+# py_install may need copied files (e.g. .env), so copy runs first.
+# Python only (uv); npm/cargo/go auto-install intentionally not carried over.
+
+[[pre-start]]
+gitignore = """
+git -C {{ primary_worktree_path }} check-ignore -q .worktrees \
+  || echo '.worktrees/' >> {{ primary_worktree_path }}/.gitignore
+"""
+
+# Copies gitignored files matching the repo's .worktreeinclude (was .worktree-copy)
+[[pre-start]]
+copy = "wt step copy-ignored --require-include"
+
+[[pre-start]]
+venv = """
+if [ -f pyproject.toml ] || ls requirements*.txt >/dev/null 2>&1; then
+  uv venv -p 3.11
+fi
+"""
+
+[[pre-start]]
+py_install = """
+if [ -f pyproject.toml ]; then
+  uv sync --all-extras -p 3.11
+elif ls requirements*.txt >/dev/null 2>&1; then
+  uv pip install $(printf -- '-r %s ' requirements*.txt)
+fi
+"""
+
+[aliases]
+# wt review <branch>: replaces git/worktree-review.sh
+review = """
+git fetch origin {{ args }} \
+  && wt switch {{ args }} -x 'git merge --ff-only origin/{{ args }} || true; claude -p "use the @pr-code-reviewer agent to review the current feature branch." | tee ~/{{ args | sanitize }}-review.txt'
+"""

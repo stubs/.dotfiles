@@ -43,6 +43,7 @@
     unmerge = !git log -n5 --pretty=format:'%h %s' --merges | fzf | cut -c -8 | xargs -o git revert -m 1
 
     # worktree creation and bootstrap venvs
+    # legacy scripts; worktrunk (wt switch --create, wt review, wt step prune) is the replacement
     wl = worktree list
     wc = !~/.dotfiles/git/worktree-create.sh
     wp = !~/.dotfiles/git/worktree-prune-merged-branches.sh

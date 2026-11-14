@@ -28,6 +28,9 @@ eval "$(starship init bash)"
 # zoxide init
 eval "$(zoxide init bash)"
 
+# worktrunk shell integration (wt switch auto-cd)
+command -v wt >/dev/null 2>&1 && eval "$(command wt config shell init bash)"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "/Users/$USER/google-cloud-sdk/path.bash.inc" ]; then . "/Users/$USER/google-cloud-sdk/path.bash.inc"; fi
 

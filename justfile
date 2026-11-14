@@ -9,6 +9,7 @@ default:
 # Complete setup - runs everything in order
 setup: install-brew \
        install-brewfile \
+       install-worktrunk-plugin \
        install-fonts \
        install-ghostty \
        install-neovim \
@@ -40,6 +41,31 @@ install-brew:
     fi
 
     brew update
+
+# Install the worktrunk Claude Code plugin (worktrunk itself comes from the brewfile)
+install-worktrunk-plugin:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    ARCH_NAME="$(uname -m)"
+    if [ "${ARCH_NAME}" = "x86_64" ]; then
+        eval $(/usr/local/bin/brew shellenv)
+    else
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+
+    if ! command -v wt >/dev/null 2>&1; then
+        echo "⚠️  wt not found (run install-brewfile first), skipping"
+        exit 0
+    fi
+    if ! command -v claude >/dev/null 2>&1; then
+        echo "⚠️  claude not found, skipping worktrunk plugin"
+        exit 0
+    fi
+
+    echo "🌳 Installing worktrunk Claude Code plugin..."
+    wt config plugins claude install
+    echo "✅ worktrunk plugin installed"
 
 # Install packages from brewfile (interactive selection)
 install-brewfile:
@@ -466,6 +492,7 @@ dry-run:
     @echo "9. 🔍 Install FZF binary"
     @echo "10. 💖 Install Crush binary"
     @echo "11. 🍎 Apply macOS system defaults"
+    @echo "    (also: 🌳 install worktrunk Claude Code plugin after the brewfile)"
     @echo ""
     @echo "To run full setup: ./justfile setup"
     @echo "To run individual steps: ./justfile <command-name>"
